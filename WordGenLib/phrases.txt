@@ -1,4 +1,4 @@
-﻿a new hope
+a new hope
 aaa
 aahs
 aarp
@@ -15,6 +15,7 @@ acetic
 acidic
 aclu
 acm
+acmes
 acylate
 ada lovelace
 adam and eve
@@ -25,8 +26,11 @@ addis ababa
 adele
 adhd
 adios
+adioses
 admiral
+admirals
 adobe
+adobes
 aed
 aero
 afaict
@@ -37,6 +41,7 @@ afn
 african union
 ages
 aging
+agings
 aha
 airbender
 akagawa
@@ -45,6 +50,7 @@ al biruni
 al khwarizmi
 alex trebek
 algebra
+algebras
 algiers
 algorithmi
 algorithms
@@ -53,11 +59,15 @@ aliens
 aligns
 all about eve
 almanac
+almanacs
 almost famous
 alove
 alpha
+alphas
 alt
+alters
 alum
+alums
 ama
 amber ale
 american idol
@@ -70,6 +80,7 @@ amy winehouse
 anakin
 and just like that
 android
+androids
 angela merkel
 angela merkel
 angry birds
@@ -89,6 +100,7 @@ apec
 apk
 apollo
 apostle
+apostles
 app
 apple watch
 apps
@@ -112,6 +124,7 @@ artemis
 artoo
 asap
 ascetic
+ascetics
 ascii
 asean
 ashoka
@@ -126,6 +139,7 @@ att
 attack of the clones
 aud
 augustus
+augustuses
 avalanche effect
 avians
 avicenna
@@ -134,11 +148,15 @@ axioms
 axions
 ayyubid
 azimuth
+azimuths
 azn
 azure
+azured
+azures
 b corp
 back to the future
 bae
+baes
 bagel
 bagels
 baghdad
@@ -147,6 +165,9 @@ bangalore
 bangkok
 barley ale
 batch
+batched
+batches
+batching
 batman
 bb king
 bbb
@@ -163,6 +184,7 @@ bernie mac
 bernie sanders
 bernoulli
 beta
+betas
 bette midler
 betty white
 betty white
@@ -190,6 +212,7 @@ bob marley
 boded
 bodes
 boding
+bodings
 bogota
 bohr
 boil the ocean
@@ -234,8 +257,10 @@ c s lewis
 c v raman
 caeca
 caf
+cafes
 cairo
 calculus
+calculuses
 call of duty
 campanelle
 camus
@@ -261,6 +286,7 @@ cdg
 celia cruz
 cenote
 ceo
+ceos
 ceres
 cfo
 chadwick boseman
@@ -271,6 +297,7 @@ channing tatum
 charles darwin
 charles i
 checkmate
+checkmates
 cheers
 cheese cloth
 cher
@@ -279,6 +306,7 @@ childish gambino
 chocolate factory
 christopher reeve
 churchill
+churchills
 cia
 cicero
 cilia
@@ -296,21 +324,39 @@ clt
 cms
 cnn
 co sign
+co signed
+co signing
+co signs
 co uk
 cod
 coded
+coder
+coders
 codes
 coding
+codings
+cods
 cold turkey
 com
+comers
+comes
+comings
 con
 conan obrien
 concacaf
 conchiglie
+coned
+cones
 confucius
+coning
 conmebol
+cons
 contralto
+contraltos
 coo
+cooed
+cooing
+coos
 copernicus
 corgi
 corgis
@@ -322,6 +368,7 @@ cpp
 crash bandicoot
 crayons
 credit
+crediting
 crura
 csi
 csi cyber
@@ -336,6 +383,7 @@ cusip
 cut corners
 da vinci
 daemon
+daemons
 daily show
 dallas
 dalton
@@ -351,6 +399,7 @@ darwinian
 dashi
 david
 david letterman
+davids
 daylight savings
 dba
 de beauvoir
@@ -359,9 +408,12 @@ decompile
 del
 del
 delhi
+dels
 delta
+deltas
 demi lovato
 den
+dens
 denzel washington
 devils advocate
 dewey
@@ -370,11 +422,14 @@ dhaka
 dhl
 dia
 diana
+dianas
 diane sawyer
 dickens
 digs
 dinner
+dinners
 dinnertime
+dinnertimes
 dionysus
 diy
 djia
@@ -383,6 +438,7 @@ dming
 dms
 dmv
 dna
+dnas
 dnc
 dnd
 do me a favor
@@ -394,14 +450,19 @@ doctor zhivago
 dod
 doge
 dogecoin
+doges
 dogs
 dolly parton
 dolma
 don cheadle
 donald glover
 dope
+doped
+dopes
 double helix
 dow
+dower
+dowers
 downton abbey
 dr seuss
 dr strangelove
@@ -435,8 +496,10 @@ el james
 elbows
 elijah wood
 elixir
+elixirs
 ella fitzgerald
 ellen
+ellens
 elton john
 email
 emailed
@@ -447,6 +510,7 @@ emma stone
 empire strikes back
 encanto
 enchilada
+enchiladas
 enders game
 enders shadow
 eoc
@@ -455,12 +519,17 @@ eol
 eons
 eps
 epsilon
+epsilons
 esc
 escalating
 est
+esters
+ests
 eta
+etas
 eternal sunshine
 eth
+ethers
 euclid
 euler
 eur
@@ -512,6 +581,7 @@ forrest gump
 foucault
 four
 four seasons
+fours
 fps
 francophone
 frankenstein
@@ -533,7 +603,9 @@ galen
 galileo
 game of thrones
 gamma
+gammas
 gandhi
+gandhis
 gas
 gauss
 gaussian
@@ -541,6 +613,7 @@ gbp
 gcc
 gears of war
 gelato
+gelatos
 gemelli
 george clooney
 george lucas
@@ -551,6 +624,7 @@ george washington
 gertrude
 get out
 gif
+gifs
 giphy
 girls
 give it a shot
@@ -569,6 +643,7 @@ good will hunting
 goodfells
 gordon ramsey
 gourde
+gourdes
 gov
 grace hopper
 gracias
@@ -579,13 +654,20 @@ grey area
 groot
 gui
 guis
+guises
 gyd
 gym rat
 hades
 hal
+haled
+haler
+hales
+haling
 halle berry
 halo
+haloes
 hamilton
+hamiltons
 han solo
 hannah arendt
 hanoi
@@ -597,13 +679,19 @@ head over heels
 hegel
 heidegger
 helix
+helixes
 hellen
 henna
+hennaed
+hennaing
+hennas
 hera
 hermes
 herschel
 hertz
 hex
+hexes
+hexing
 hey man
 hey there
 high noon
@@ -619,6 +707,8 @@ hobbes
 hola
 home sweet home
 hong kong
+hong konger
+hong kongers
 hot cakes
 hot water
 hrc
@@ -630,6 +720,7 @@ i saw that
 ian fleming
 ianal
 ibex
+ibexes
 ibn rushd
 ibn sina
 icbms
@@ -651,12 +742,17 @@ imessage
 imho
 imo
 imped
+impeded
+impedes
+impeding
 in the bag
 in the same breath
 incase
 inched
 inches
 incise
+incised
+incises
 india pale ale
 indiana jones
 indira gandhi
@@ -665,9 +761,11 @@ injera
 inked
 inr
 int
+inters
 ioc
 ios
 iota
+iotas
 ipa
 ipad
 ipad os
@@ -682,6 +780,7 @@ irs
 isis
 isk
 ism
+isms
 iso
 ist
 istanbul
@@ -725,6 +824,7 @@ john stuart mill
 johnny carson
 johnny depp
 joker
+jokers
 jon stewart
 jordan peele
 jpy
@@ -762,6 +862,7 @@ kmph
 kms
 kohl
 kohli
+kohls
 kolkata
 kpw
 kramer
@@ -771,20 +872,27 @@ lady gaga
 lagos
 lahore
 lak
+lakes
 lakshmi
 lan
+lanes
 lapwing
+lapwings
 lasagne
+lasagnes
 latam
 late late show
 late night
 lawrence of arabia
 lax
+laxer
 layer
+layered
 layering
 layers
 lbj
 lea
+leas
 legend of zelda
 legoland
 legolas
@@ -798,13 +906,19 @@ lhr
 lima
 lincoln
 linguine
+linguines
 lmao
 lmk
 local train
 locke
+locked
 loki
 lol
+loled
+loling
+lols
 london
+londons
 lord of the flies
 lord of the rings
 loretta lynn
@@ -824,16 +938,24 @@ mad max
 mad men
 madea
 madonna
+madonnas
 madrid
+madrids
 maggie smith
 malala
 malcolm turnbull
 malcolm x
 malt
+malted
+malting
+maltings
+malts
 maluma
 mamluk
 manhattan
+manhattans
 manila
+manilas
 mankiller
 mao
 mao zedong
@@ -849,19 +971,24 @@ martin luther king
 martin luther king jr
 marx
 marxist
+marxists
 matt damon
 max planck
 maxwell
+maxwells
 mdd
 mena
 mendel
 mendeleev
 merci
+mercies
 mercury
 merhba
 meryl streep
 metaverse
 mew
+mewed
+mewing
 mexico
 mexico city
 mezzo soprano
@@ -876,12 +1003,18 @@ minecraft
 minerva
 minis
 misdirect
+misdirected
+misdirecting
 misdirection
+misdirections
+misdirects
 miso
 miss the boat
 missed the boat
 mistook
 mit
+miters
+mites
 mla
 mlb
 mlk
@@ -901,8 +1034,11 @@ monty python
 moo
 mooc
 moocs
+mooed
+mooing
 moon jae in
 moonstruck
+moos
 morgan freeman
 mortal kombat
 moscow
@@ -917,6 +1053,7 @@ mumbai
 muppets
 muslin
 muslin cloth
+muslins
 mxn
 mycotic
 myopic
@@ -931,13 +1068,16 @@ nasa
 nascar
 nasdaq
 nay
+nays
 nbc
 nbd
 neo
 neptune
 new york
 new yorker
+new yorkers
 newton
+newtons
 nfl
 nhl
 nicolas cage
@@ -948,13 +1088,21 @@ no one
 no way
 noah webster
 nobel
+nobels
 non
 nonstop
+nonstops
 noob
 noobies
 noobs
 northeast
+northeaster
+northeasters
+northeasts
 northwest
+northwester
+northwesters
+northwests
 notorious
 npr
 nsa
@@ -971,6 +1119,7 @@ nyt
 nyu
 nzd
 obama
+obamas
 obi wan
 obi wan kenobi
 objective c
@@ -990,14 +1139,18 @@ omar epps
 omar khayyam
 omar khayyam
 omega
+omegas
 omfg
 omg
 omicron
+omicrons
 on thin ice
 one in a blue moon
 onerepublic
 onoc
 ooh
+oohed
+oohing
 oohs
 oop
 oops
@@ -1005,9 +1158,11 @@ opec
 oprah
 oprah winfrey
 ord
+orders
 orecchiette
 org
 orzo
+orzos
 osaka
 osha
 osx
@@ -1018,6 +1173,7 @@ ovulate
 ovulated
 ovulates
 ovulation
+ovulations
 ozone layer
 padawan
 paine
@@ -1025,6 +1181,7 @@ pale ale
 palpatine
 pappardelle
 pascal
+pascals
 paso
 pasteur
 patsy cline
@@ -1032,22 +1189,29 @@ paul
 paul newman
 paula abdul
 pauling
+pauls
 pbk
 peaky blinders
 penelope cruz
 penne
+penned
+pennes
 peso
 pesos
 peter
 peter otoole
 peter pan
+petered
+petering
 pharaoh
 pheobe buffay
 phi
 phi beta kappa
+phis
 php
 phx
 piano
+pianos
 pichai
 piece of cake
 pikachu
@@ -1061,7 +1225,10 @@ planck
 plato
 pleads
 pleas
+pleases
+pleasings
 pln
+plns
 pokemon
 pokemon go
 pongyang
@@ -1071,6 +1238,8 @@ portlandia
 poseidon
 potus
 pow
+power
+powers
 precious
 prego
 prerace
@@ -1079,7 +1248,9 @@ prerecorded
 prerecording
 prerecords
 pro
+pros
 psi
+psis
 psycho
 ptolemy
 pulp fiction
@@ -1094,6 +1265,7 @@ rachel carson
 rachel greene
 rachel ray
 radar
+radars
 raiders of the lost ark
 raki
 raman
@@ -1102,24 +1274,32 @@ ran as
 ran for
 ran to
 ravioli
+raviolis
 ray charles
 rbg
 rcsi
 rear window
 ref
+refer
+refers
+refs
 regis philbin
 rei
 relativity
 return of the jedi
 rev
+revers
+revs
 rfk
 richard pryor
 ricky martin
 rigatoni
+rigatonis
 rip off
 risc
 riyadh
 rna
+rnas
 rnc
 robert downey jr
 robin williams
@@ -1131,6 +1311,7 @@ roflmao
 rombauer
 rome
 roosevelt
+roosevelts
 rosalind
 rosalind franklin
 ross geller
@@ -1145,6 +1326,7 @@ rtfm
 rts
 ru girls
 rub
+rubs
 run to
 running as
 running for
@@ -1169,6 +1351,7 @@ santiago
 sao paolo
 sartre
 sash
+sashes
 saturday night live
 sauteed
 saving private ryan
@@ -1179,16 +1362,23 @@ scotus
 scrape the barrel
 scraping the barrel
 scuba
+scubas
 sea
 sean connery
 search engine
+seas
 seatac
 seaweed
+seaweeds
 second to none
 seinfeld
 selfie
+selfied
+selfies
 semolina
+semolinas
 seoul
+seouls
 sex and the city
 sfo
 sfw
@@ -1197,6 +1387,9 @@ sha
 shaggy
 shakira
 shanghai
+shanghaied
+shanghaiing
+shanghais
 shania twain
 shaq
 shaquille oneal
@@ -1219,6 +1412,9 @@ sliver linings playbook
 smite
 smites
 snafu
+snafued
+snafuing
+snafus
 sneered
 sneers
 snl
@@ -1226,15 +1422,26 @@ snowball effect
 social media
 socrates
 sojourner
+sojourners
 solid state
 sonar
+sonars
 soprano
+sopranos
 sound of music
 sourdough
+sourdoughs
 southeast
+southeaster
+southeasters
+southeasts
 southwest
+southwester
+southwesters
+southwests
 space cadet
 spaghetti
+spaghettis
 speed of light
 speed of sound
 speed run
@@ -1248,6 +1455,7 @@ ssdd
 ssg
 ssr
 stake
+staked
 stakes
 staking
 stalin
@@ -1276,11 +1484,14 @@ svu
 swana
 swat
 swot
+swots
 szx
 tagliatelle
+tagliatelles
 tamales
 tan
 tanning
+tannings
 tans
 tanzimat
 tares
@@ -1305,6 +1516,7 @@ tees
 tehran
 tel
 telegram
+telegrams
 terf
 terfy
 terms
@@ -1341,21 +1553,29 @@ theodore roosevelt
 there will be blood
 theseus
 theta
+thetas
 thick and thin
 thin ice
 thoreau
 threepio
 tibia
+tibiad
+tibias
 tictac
 tictacs
 tiktok
 tim
+timers
 timid
+timider
+timings
+tims
 tina turner
 tldr
 to kill a mockingbird
 to the wire
 tofu
+tofus
 tokyo
 tolstoy
 tom
@@ -1363,13 +1583,17 @@ tom cruz
 tom hanks
 tom hardy
 tomb raider
+tomes
+toms
 tonight show
 tonkotsu
 tony hawk
 tortellini
+tortellinis
 toung turks
 tpp
 triad
+triads
 trio
 trios
 tron
@@ -1393,6 +1617,7 @@ unacclimatization
 unacclimatizations
 unacclimatized
 unclear
+uncleared
 uncloak
 unecclesiastical
 unesco
@@ -1412,8 +1637,10 @@ unshoed
 up in arms
 ups
 urge
+urged
 urges
 urging
+urgings
 usaf
 usd
 usd
@@ -1425,6 +1652,7 @@ utf
 vader
 valid
 validate
+validated
 validates
 validating
 van gogh
@@ -1434,29 +1662,43 @@ veep
 venus
 vera
 vermicelli
+vermicellis
 vesta
 vex
+vexed
+vexes
+vexing
 vilification
 vilifies
 vilify
+vilifying
 villi
 viola davis
 vista
+vistas
 vivid
 volta
 voltaire
+voltas
 vulcan
+vulcans
 waging
 wake
+wakes
 walter cronkite
 waluigi
 warcraft
 watch os
 watt
+watts
 waxwing
+waxwings
 webmd
 webster
 wee
+weed
+weeing
+wees
 welkom
 west side
 west side story
@@ -1471,6 +1713,8 @@ wiki
 wikimedia
 wikipedia
 wikipedia
+wikipedias
+wikis
 wilbur
 will smith
 willkommen
@@ -1484,7 +1728,13 @@ woke
 wokes
 woks
 wolverine
+wolverines
 woof
+woofed
+woofer
+woofers
+woofing
+woofs
 woops
 words with friends
 worked out
@@ -1503,6 +1753,9 @@ xaf
 xbox
 xbox one
 xerox
+xeroxed
+xeroxes
+xeroxing
 xhtml
 xkcd
 xml
@@ -1514,6 +1767,7 @@ yarer
 yasser
 yay
 yea
+yeas
 yellen
 yer
 ymmv
@@ -1526,12 +1780,18 @@ zar
 zelda
 zendaya
 zenith
+zeniths
 zeus
 zhivago
 ziggy marley
 zillow
 zirp
 ziti
+zitis
 zmw
 zucchini
+zucchinis
 zzz
+zzzed
+zzzing
+zzzs
