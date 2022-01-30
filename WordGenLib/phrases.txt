@@ -1426,11 +1426,9 @@ ttyl
 turbotax
 twf
 tyler perry
-uah
 ucl
 uefa
 ufo
-ugx
 unacclaimed
 unacclimated
 unacclimation
@@ -1576,10 +1574,8 @@ xerox
 xeroxed
 xeroxes
 xeroxing
-xhtml
 xkcd
 xml
-xof
 xoxo
 xueqin
 yager
