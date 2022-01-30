@@ -61,12 +61,11 @@ namespace WordGenLib
     public class Generator
     {
         private readonly int gridSize;
-        private readonly ImmutableArray<string> commonWords;
-        private readonly ImmutableArray<string> commonAndObscureWords;
 
         private readonly Dictionary<int, ImmutableArray<string>> commonWordsByLength;
         private readonly Dictionary<int, ImmutableArray<string>> obscureWordsByLength;
-        private readonly ImmutableArray<ImmutableDictionary<char, ImmutableSortedSet<string>>> wordsByLetterPositon;
+
+        private readonly ImmutableArray<ScoredLine> possibleLines;
 
         public int GridSize => gridSize;
 
@@ -75,29 +74,32 @@ namespace WordGenLib
             return new(
                 gridSize,
                 GridReader.COMMON_WORDS
-                    .Where(s => s.Length > 2 && s.Length <= gridSize)
-                    .ToImmutableArray(),
-                GridReader.ALL_WORDS
-                    .Where(s => s.Length > 2 && s.Length <= gridSize)
-                    .ToImmutableArray()
+                    .RemoveAll(s => s.Length <= 2 || s.Length > gridSize),
+                GridReader.OBSCURE_WORDS
+                    .RemoveAll(s => s.Length <= 2 || s.Length > gridSize)
                 );
         }
 
         internal Generator(int gridSize, ImmutableArray<string> commonWords, ImmutableArray<string> obscureWords)
         {
             this.gridSize = gridSize;
-            this.commonWords = commonWords.Where(w => w.Length <= gridSize).ToImmutableArray();
-            commonAndObscureWords = commonWords.AddRange(obscureWords.Where(w => w.Length <= gridSize));
 
-            commonWordsByLength = this.commonWords.GroupBy(w => w.Length).ToDictionary(g => g.Key, g => g.ToImmutableArray ());
-            obscureWordsByLength = obscureWords.Where(w => w.Length <= gridSize).GroupBy(w => w.Length).ToDictionary(g => g.Key, g => g.ToImmutableArray());
+            commonWordsByLength = commonWords.GroupBy(w => w.Length).ToDictionary(g => g.Key, g => g.ToImmutableArray ());
+            obscureWordsByLength = obscureWords.Except(commonWords).GroupBy(w => w.Length).ToDictionary(g => g.Key, g => g.ToImmutableArray());
 
-            var x = ImmutableArray.CreateBuilder<ImmutableDictionary<char, ImmutableSortedSet<string>>>(gridSize);
-            for (int i = 0; i < gridSize; i++)
-            {
-                x.Add(commonAndObscureWords.Where(x => x.Length > i).Select(x => (charAt: x[i], word: x)).GroupBy(x => x.charAt, x => x.word).ToImmutableDictionary(group => group.Key, group => group.ToImmutableSortedSet()));
-            }
-            wordsByLetterPositon = x.ToImmutableArray();
+            possibleLines = AllPossibleLines(gridSize)
+                .GroupBy(l => l.Line).Select(grp => grp.First())
+                .OrderBy(l => Random.Shared.Next(int.MaxValue))
+                .ToImmutableArray()
+                .Sort(Reversed<ScoredLine>((x, y) =>
+                {
+                    if (x.MaxLength > y.MaxLength) return +1; // x is greater than y.
+                    else if (x.MaxLength < y.MaxLength) return -1; // x is less than y.
+
+                    var xValue = x.NumLetters + x.NumLettersOfCommonWords;
+                    var yValue = y.NumLetters + y.NumLettersOfCommonWords;
+                    return xValue - yValue;
+                }));
         }
 
         private record class ScoredLine(string Line, int MaxLength, int NumLetters, int NumLettersOfCommonWords) { }
@@ -106,54 +108,74 @@ namespace WordGenLib
                 => Down.Select((options, index) => (options, index)).Where(oi => oi.options.Length > 1).Select(oi => oi.index);
             public IEnumerable<int> UndecidedAcross
                 => Across.Select((options, index) => (options, index)).Where(oi => oi.options.Length > 1).Select(oi => oi.index);
-            public string Key => string.Join(",", Down.Select(opts => opts.IsEmpty ? "[]" : $"[{opts[0]}/{opts.Length}/{opts[^1]}]")) + "///" +
-                                string.Join(",", Across.Select(opts => opts.IsEmpty ? "[]" : $"[{opts[0]}/{opts.Length}/{opts[^1]}]"));
         }
-        private record class FinalGrid(ImmutableArray<ScoredLine> Down, ImmutableArray<ScoredLine> Across) { }
+        private record class FinalGrid(ImmutableArray<ScoredLine> Down, ImmutableArray<ScoredLine> Across)
+        {
+            public string Repr => string.Join('\n', Down.Select(l => l.Line));
+        }
 
-        private IEnumerable<ScoredLine> AllPossibleLines(int maxLength)
+        private ImmutableArray<ScoredLine> AllPossibleLines(int maxLength)
+        {
+            return AllPossibleLines(maxLength, new Dictionary<int, ImmutableArray<ScoredLine>>());
+        }
+        private ImmutableArray<ScoredLine> AllPossibleLines(int maxLength, Dictionary<int, ImmutableArray<ScoredLine>> memo)
         {
             if (maxLength > gridSize) throw new Exception($"{nameof(maxLength)} ({maxLength}) cannot be greater than {nameof(gridSize)} {gridSize}");
-            if (maxLength < 3) yield break;
+            if (maxLength < 3) return ImmutableArray<ScoredLine>.Empty;
 
-            foreach (string word in commonWordsByLength[maxLength])
+            if (memo.TryGetValue(maxLength, out var result))
             {
-                yield return new ScoredLine(word, maxLength, maxLength, maxLength);
+                return result;
+                //foreach (var line in result) yield return line;
+                //yield break;
             }
 
-            foreach (string word in obscureWordsByLength[maxLength])
-            {
-                yield return new ScoredLine(word, maxLength, maxLength, 0);
-            }
+            var builder = ImmutableArray.CreateBuilder<ScoredLine>();
+            builder.AddRange(commonWordsByLength[maxLength]
+                .Select(word => new ScoredLine(word, maxLength, maxLength, maxLength)));
+
+            builder.AddRange(obscureWordsByLength[maxLength]
+                .Select(word => new ScoredLine(word, maxLength, maxLength, 0)));
 
             // recurse into *[ANYTHING], and [ANYTHING]*
-            foreach (var line in AllPossibleLines(maxLength - 1))
-            {
-                yield return line with { Line = GenHelper.BLOCKED + line.Line };
-                yield return line with { Line = line.Line + GenHelper.BLOCKED };
-            }
+            builder.AddRange(AllPossibleLines(maxLength - 1, memo)
+                .SelectMany(line => new[] {
+                    line with { Line = GenHelper.BLOCKED + line.Line },
+                    line with { Line = line.Line + GenHelper.BLOCKED }
+                }));
 
             // recurse into all combination of [ANYTHING]*[ANYTHING]
-            for (int i = 3; i < gridSize - 3; ++i)
+            //
+            // For length 10:
+            // 0 1 2 3 4 5 6 7 8 9
+            // _ _ _ _ _ _ _ _ _ _
+            //       ^     ^
+            // Blockage can be anywhere etween idx 3 and len-4.
+            for (int i = 3; i < maxLength - 4; ++i)
             {
                 int firstLength = i;  // Always >= 3.
-                int secondLength = gridSize - (i + 1);  // Always >= 3.
+                int secondLength = maxLength - (i + 1);  // Always >= 3.
 
                 if (secondLength < 3) throw new Exception($"{nameof(secondLength)} is {secondLength} (i = {i}).");
 
-                foreach (var firstHalf in AllPossibleLines(firstLength))
+                foreach (var firstHalf in AllPossibleLines(firstLength, memo))
                 {
-                    foreach (var secondHalf in AllPossibleLines(secondLength))
+                    foreach (var secondHalf in AllPossibleLines(secondLength, memo))
                     {
-                        yield return new ScoredLine(
+                        builder.Add( new ScoredLine(
                             firstHalf.Line + GenHelper.BLOCKED + secondHalf.Line,
                             Math.Max(firstHalf.MaxLength, secondHalf.MaxLength),
                             firstHalf.NumLetters + secondHalf.NumLetters,
                             firstHalf.NumLettersOfCommonWords + secondHalf.NumLettersOfCommonWords
+                            )
                             );
                     }
                 }
             }
+
+            var options = builder.DistinctBy(l => l.Line).ToImmutableArray();
+            memo.Add(maxLength, options);
+            return options;
         }
 
         static GridState Prefilter(GridState state, Direction direction)
@@ -323,455 +345,47 @@ namespace WordGenLib
             return false;
         }
 
-
         private static Comparison<T> Reversed<T>(Comparison<T> original)
         {
             return (x, y) => original(y, x);
         }
-        private static int BiasedRandom(int max)
+
+        public IEnumerable<char?[,]> GenerateGrid()
         {
-            int random = Random.Shared.Next((max * (max - 1)) / 2);
-
-            int threshold = 0;
-            for (int i = 0; i < max; ++i)
-            {
-                threshold += max - (i+1);
-
-                if (random <= threshold) return i;
-            }
-
-            throw new Exception($"Unexpected {threshold} < {random} (out of max {max})");
-        }
-
-        //private (
-        //    ImmutableArray<ImmutableArray<ScoredLine>> down,
-        //    ImmutableArray<ImmutableArray<ScoredLine>> across
-        //) OneAttempt(ImmutableArray<ImmutableArray<ScoredLine>> down,
-        //    ImmutableArray<ImmutableArray<ScoredLine>> across)
-        //{
-        //    var dir = new[] { Direction.Horizontal, Direction.Vertical }[Random.Shared.Next(2)];
-
-        //    var line = Random.Shared.Next(0, gridSize);
-
-        //    var options = (dir == Direction.Horizontal ? across : down)[line];
-
-        //    var attempt = options[BiasedRandom(options.Length)];
-        //    var opposite = dir == Direction.Horizontal ? down : across;
-        //    var newOpposite = ImmutableArray.CreateBuilder<ImmutableArray<ScoredLine>>(opposite.Length);
-
-        //    for (int i = 0; i < gridSize; i++)
-        //    {
-        //        // WLOG say we dir is Horizontal, and opopsite is Vertical.
-        //        // we have:
-        //        //
-        //        // W O R D
-        //        // _ _ _ _
-        //        // _ _ _ _
-        //        // _ _ _ _
-        //        //
-        //        // Then go over each COL (i), filtering s.t. possible lines
-        //        // only include cases where col[i]'s |attempt|th character == attempt[i].
-        //        var constriant = attempt.Line[i];
-        //        var currentOptions = opposite[i]
-        //            .Where(option => option.Line[line] == constriant)
-        //            .ToImmutableArray();
-
-        //        if (currentOptions.Length == 0)
-        //        {
-        //            // This is not acceptable.
-        //            // Fail this attempt.
-        //            return dir == Direction.Horizontal
-        //                ? (down, across. )
-        //                //? (down, across.RemoveAt(line))
-        //                //: (down.RemoveAt(line), across);
-        //        }
-
-        //        opposite[i] = currentOptions;
-        //    }
-        //}
-
-        
-
-        public char?[,] GenerateGrid()
-        {
-            var usedWords = new HashSet<string>();
-
-            char?[,] grid = new char?[gridSize, gridSize];
-
-            if (gridSize == 5)
-            {
-                var possibleLines = AllPossibleLines(gridSize)
-                    .GroupBy(l => l.Line).Select(grp => grp.First())
-                    .OrderBy(l => Random.Shared.Next(int.MaxValue))
-                    .ToImmutableArray()
-                    .Sort(Reversed<ScoredLine>((x, y) =>
-                {
-                    if (x.MaxLength > y.MaxLength) return +1; // x is greater than y.
-                    else if (x.MaxLength < y.MaxLength) return -1; // x is less than y.
-
-                    var xValue = x.NumLetters + x.NumLettersOfCommonWords;
-                    var yValue = y.NumLetters + y.NumLettersOfCommonWords;
-                    return xValue - yValue;
-                }));
-
-                GridState state = new(
-                    Down: Enumerable.Range(0, gridSize).Select(_ => possibleLines).ToImmutableArray(),
-                    Across: Enumerable.Range(0, gridSize).Select(_ => possibleLines).ToImmutableArray()
-                );
-
-                int tries = 0;
-                Direction direction = Direction.Horizontal;
-                while (tries < 4)
-                {
-                    ++tries;
-                    GridState newState = Prefilter(state, direction);
-                    if (!Changed(state, newState)) break;
-
-                    state = newState;
-                    direction = direction == Direction.Vertical ? Direction.Horizontal : Direction.Vertical;
-                }
-
-                foreach (var x in AllPossibleGrids(state))
-                {
-                    Console.WriteLine(x);
-                }
-
-                GenHelper.Fill(grid, 0, Direction.Horizontal, 0, state.Across[0][Random.Shared.Next(state.Across[0].Length)].Line);
-                GenHelper.Fill(grid, 1, Direction.Horizontal, 0, state.Across[1][Random.Shared.Next(state.Across[1].Length)].Line);
-                GenHelper.Fill(grid, 2, Direction.Horizontal, 0, state.Across[2][Random.Shared.Next(state.Across[2].Length)].Line);
-                GenHelper.Fill(grid, 3, Direction.Horizontal, 0, state.Across[3][Random.Shared.Next(state.Across[3].Length)].Line);
-                return grid;
-            }
-
-            var startDirection = new[] { Direction.Horizontal, Direction.Vertical }[Random.Shared.Next(2)];
-            int ODD_OR_EVEN = new int[] { 0, 1 }[Random.Shared.Next(2)];
-
-            for (int q = 0; q < 3; ++q)
-            {
-                int index = 2 * Random.Shared.Next(gridSize / 2) + ODD_OR_EVEN;
-                var props = GenHelper.FindStartPositionAndLength(grid, index, startDirection);
-
-                if (props == null) continue;
-
-                var (start, length, constraints) = props.Value;
-
-                var possibleWords = commonWordsByLength[length]
-                    .Where(word => GenHelper.WordsCompatible(word, constraints) && !usedWords.Contains(word)
-                    ).ToArray();
-
-                if (possibleWords.Length == 0) continue;
-
-                var chosenWord = possibleWords[Random.Shared.Next(possibleWords.Length)];
-                usedWords.Add(chosenWord);
-
-                GenHelper.Fill(grid, index, startDirection, start, chosenWord);
-
-                startDirection = startDirection switch
-                {
-                    Direction.Horizontal => Direction.Vertical,
-                    Direction.Vertical => Direction.Horizontal,
-                    _ => Direction.Horizontal,
-                };
-            }
-
-            for (int q = 0; q < 0; ++q)
-            {
-                int index = 2 * Random.Shared.Next(gridSize / 2) + ODD_OR_EVEN;
-                var props = GenHelper.FindStartPositionAndLength(grid, index, startDirection);
-                if (props == null) continue;
-                var (start, length, constraints) = props.Value;
-
-                string[]? possibleWords = commonWords
-                    .Where(word =>
-                    {
-                        if (word.Length > length) return false;
-                        if (word.Length == length) return true;
-                        if (length - word.Length == 2 || length - word.Length == 3) return false;
-
-                        if (word.Length != length)
-                        {
-                            // Another use case: We never want the block added in [rowOrCol, start+word.Length]
-                            // to split the board s.t. a section is 2 characters or less
-                            var colOrRow = start + word.Length;
-                            var otherDirection = startDirection switch
-                            {
-                                Direction.Horizontal => Direction.Vertical,
-                                _ => Direction.Horizontal
-                            };
-
-                            int clearanceFromEnd = GenHelper.ClearanceFromEnd(grid, colOrRow, index, otherDirection);
-                            if (clearanceFromEnd == 1 || clearanceFromEnd == 2) return false;
-
-                            int clearanceFromStart = GenHelper.ClearanceFromStart(grid, colOrRow, index, otherDirection);
-                            if (clearanceFromStart == 1 || clearanceFromStart == 2) return false;
-                        }
-
-                        char? c = GenHelper.AtPosition(grid, index, start + word.Length, startDirection);
-
-                        return (c == null || c == GenHelper.BLOCKED);
-                    })
-                    .Where(word => GenHelper.WordsCompatible(word, constraints) && !usedWords.Contains(word))
-                    .GroupBy(word => word.Length)
-                    .OrderByDescending(group => group.Key)
-                    .FirstOrDefault()?.ToArray();
-
-                if (possibleWords == null) continue;
-
-                var chosenWord = possibleWords[Random.Shared.Next(possibleWords.Length)];
-                usedWords.Add(chosenWord);
-
-                if (chosenWord.Length == length)
-                    GenHelper.Fill(grid, index, startDirection, start, chosenWord);
-                else
-                    GenHelper.Fill(grid, index, startDirection, start, chosenWord + GenHelper.BLOCKED);
-
-                startDirection = startDirection switch
-                {
-                    Direction.Horizontal => Direction.Vertical,
-                    Direction.Vertical => Direction.Horizontal,
-                    _ => Direction.Horizontal,
-                };
-            }
-
-            for (int q = 0; q < 400; ++q)
-            {
-                int index = Random.Shared.Next(gridSize);
-
-                var props = GenHelper.FindStartPositionAndLength(grid, index, startDirection);
-                if (props == null) continue;
-                var (start, length, constraints) = props.Value;
-
-                string? word = FindWordWithConstraints(usedWords, startDirection, index, start, length, constraints, grid);
-                if (word == null) continue;
-
-                usedWords.Add(word);
-                GenHelper.Fill(grid, index, startDirection, start, word);
-
-                startDirection = startDirection switch
-                {
-                    Direction.Horizontal => Direction.Vertical,
-                    Direction.Vertical => Direction.Horizontal,
-                    _ => Direction.Horizontal,
-                };
-            }
-
-            foreach (Direction d in new[] { Direction.Horizontal, Direction.Vertical })
-            {
-                for (int i = 0; i < gridSize; ++i)
-                {
-                    (int, int, char?[])? props = null;
-
-                    while (null != (props = GenHelper.FindStartPositionAndLength(grid, i, d)))
-                    {
-                        var (start, length, constraints) = props.Value;
-                        string? word = FindWordWithConstraints(usedWords, d, i, start, length, constraints, grid);
-
-                        if (word == null) word = string.Join("", constraints.Select(c => c == null ? '?' : c));
-
-                        GenHelper.Fill(grid, i, d, start, word);
-                    }
-                }
-            }
-
-            return grid;
-        }
-
-        private string? FindWordWithConstraints(HashSet<string> usedWords, Direction direction, int index, int start, int length, char?[] constraints, char?[,] grid)
-        {
-            return FindWordsWithConstraints(usedWords, direction, index, start, length, constraints, grid)
-            .FirstOrDefault();
-        }
-
-        public IEnumerable<string> FindWordsWithConstraints(HashSet<string> usedWords, Direction direction, int index, int start, int length, char?[] constraints, char?[,] grid)
-        {
-            int gridSize = grid.GetLength(0);
-
-            return GenHelper.CompatibleWords(constraints, wordsByLetterPositon, commonAndObscureWords)
-            .Where(word => word.Length <= length)
-            //.SelectMany<string, (int ogWordLength, string word)>(word =>
-            //{
-            //    int ogWordLength = word.Length;
-
-            //    if (ogWordLength == length) return new[] { (ogWordLength, word) };
-            //    int lengthDiff = length - ogWordLength;
-
-            //    return lengthDiff switch
-            //    {
-            //        <= 0 => new[] { (ogWordLength, word) },
-            //        1 => new[]
-            //        {
-            //            (ogWordLength, GenHelper.BLOCKED + word),
-            //            (ogWordLength, word + GenHelper.BLOCKED),
-            //        },
-            //        2 => new[]
-            //        {
-            //            (ogWordLength, GenHelper.BLOCKED + GenHelper.BLOCKED + word),
-            //            (ogWordLength, GenHelper.BLOCKED + word + GenHelper.BLOCKED),
-            //            (ogWordLength, word + GenHelper.BLOCKED + GenHelper.BLOCKED),
-            //        },
-            //        3 => new[]
-            //        {
-            //            (ogWordLength, GenHelper.BLOCKED + GenHelper.BLOCKED + GenHelper.BLOCKED + word),
-            //            (ogWordLength, GenHelper.BLOCKED + GenHelper.BLOCKED + word + GenHelper.BLOCKED),
-            //            (ogWordLength, GenHelper.BLOCKED + word + GenHelper.BLOCKED + GenHelper.BLOCKED),
-            //            (ogWordLength, word + GenHelper.BLOCKED + GenHelper.BLOCKED + GenHelper.BLOCKED),
-            //        },
-            //        _ => new[]
-            //        {
-            //            (ogWordLength, new string(' ', lengthDiff - 1) + GenHelper.BLOCKED + word),
-            //            (ogWordLength, word + GenHelper.BLOCKED),
-            //        },
-            //    };
-            //})
-            .Select<string, (int ogWordLength, string word)>(word =>
-            {
-                int ogWordLength = word.Length;
-                int lengthDifference = length - ogWordLength;
-
-                return lengthDifference switch
-                {
-                    <= 0 => (ogWordLength, word),
-                    >= 1 and <= 3 => (ogWordLength, word + new string(GenHelper.BLOCKED, lengthDifference)),
-                    >= 4 => (ogWordLength, word + GenHelper.BLOCKED),
-                };
-            })
-            .Where(wl => {
-                string word = wl.word;
-
-                for (int i = 0; i < word.Length; ++i)
-                {
-                    if (word[i] != GenHelper.BLOCKED) continue;
-
-                    // Any blocks we add need to be at a non-conflicting place.
-                    char? c = GenHelper.AtPosition(grid, index, start + i, direction);
-                    if (!(c == null || c == GenHelper.BLOCKED)) return false;
-
-                    // We never want the block added in [rowOrCol, start+word.Length]
-                    // to split the board s.t. a section is 2 characters or less.
-                    var colOrRow = start + i;
-                    var otherDirection = direction switch
-                    {
-                        Direction.Horizontal => Direction.Vertical,
-                        _ => Direction.Horizontal
-                    };
-
-                    int clearanceFromEnd = GenHelper.ClearanceFromEnd(grid, colOrRow, index, otherDirection);
-                    if (clearanceFromEnd == 1 || clearanceFromEnd == 2) return false;
-
-                    int clearanceFromStart = GenHelper.ClearanceFromStart(grid, colOrRow, index, otherDirection);
-                    if (clearanceFromStart == 1 || clearanceFromStart == 2) return false;
-                }
-                return true;
-            })
-            .OrderByDescending(tp => tp.ogWordLength)
-            .Select(tp => tp.word)
-            .Where(word =>
-            {
-                for (int i = 0; i < word.Length; ++i)
-                {
-                    var oldLine = string.Join(GenHelper.BLOCKED, GridReader.ReadLine(grid, start + i, direction switch { Direction.Horizontal => Direction.Vertical, _ => Direction.Horizontal }));
-                    var newLine =
-                        (index == 0 ? $"{word[i]}{oldLine.AsSpan()[1..]}" :
-                        index == gridSize - 1 ? $"{oldLine.AsSpan()[..^1]}{word[i]}" :
-                        $"{oldLine.AsSpan()[..(index - 1)]}{word[i]}{oldLine.AsSpan()[(index + 1)..]}").Split(GenHelper.BLOCKED);
-
-                    foreach (string newLineWord in newLine)
-                    {
-                        // If the new word we formed is a fully-formed word, it works.
-                        // Don't check every possible word.
-                        if (newLineWord.Trim().Length == 0) continue;
-                        if (commonAndObscureWords.Contains(newLineWord)) continue;
-                        var length = newLineWord.Length;
-
-                        if (false == commonAndObscureWords
-                            .Where(word => word.Length <= length)
-                            // Consider making this less strict: (e. accept diff 2,3)
-                            .Where(word =>
-                            {
-                                var diff = length - word.Length;
-                                return diff != 2 && diff != 3;
-                            })
-                            .Where(word => GenHelper.WordsCompatible(word, newLineWord))
-                            .Any()
-                        )
-                        {
-                            return false;
-                        }
-                    }
-                }
-                return true;
-            }
+            GridState state = new(
+                Down: Enumerable.Range(0, gridSize).Select(_ => possibleLines).ToImmutableArray(),
+                Across: Enumerable.Range(0, gridSize).Select(_ => possibleLines).ToImmutableArray()
             );
-        }
 
-        public IEnumerable<string> CompatibleWords(char?[] template) => GenHelper.CompatibleWords(template, wordsByLetterPositon, commonAndObscureWords);
+            int tries = 0;
+            Direction direction = Direction.Horizontal;
+            while (tries < 4)
+            {
+                ++tries;
+                GridState newState = Prefilter(state, direction);
+                if (!Changed(state, newState)) break;
+
+                state = newState;
+                direction = direction == Direction.Vertical ? Direction.Horizontal : Direction.Vertical;
+            }
+
+            HashSet<string> returned = new();
+
+            foreach (var x in AllPossibleGrids(state))
+            {
+                if (returned.Add(x.Repr))
+                {
+                    var grid = new char?[gridSize, gridSize];
+                    for (int i = 0; i < gridSize; ++i) GenHelper.Fill(grid, i, Direction.Horizontal, 0, x.Across[i].Line);
+                    yield return grid;
+                }
+            }
+        }
     }
 
     internal static class GenHelper
     {
         public const char BLOCKED = '`';
-
-        public static bool WordsCompatible(string word, string template)
-        {
-            if (word.Length > template.Length) return false;
-            for (int i = 0; i < word.Length; ++i)
-            {
-                char t = template[i];
-                if (t != word[i] && t != ' ') return false;
-            }
-            return true;
-        }
-        public static bool WordsCompatible(string word, char?[] template)
-        {
-            if (word.Length > template.Length) return false;
-            for (int i = 0; i < word.Length; ++i)
-            {
-                char? t = template[i];
-                if (t != word[i] && t != null) return false;
-            }
-            return true;
-        }
-        public static IEnumerable<string> CompatibleWords(char?[] template, ImmutableArray<ImmutableDictionary<char, ImmutableSortedSet<string>>> wordsByLetterPosition, ImmutableArray<string> allWords)
-        {
-            ImmutableSortedSet<string>? candidates = null;
-
-            for (int i = 0; i < template.Length; ++i)
-            {
-                char? t = template[i];
-                if (t == null || t == '?') continue;
-
-                var possibleWords = wordsByLetterPosition[i][t.Value];
-                if (candidates == null) candidates = possibleWords;
-                else candidates = candidates.Intersect(possibleWords);
-            }
-
-            if (candidates == null) return allWords;
-            return candidates;
-        }
-
-        public static (int, int, char?[])? FindStartPositionAndLength(char?[,] grid, int rowOrCol, Direction dir)
-        {
-            int gridSize = grid.GetLength(0);
-
-            string[] segments = GridReader.ReadLine(grid, rowOrCol, dir);
-
-            int[] viableSegmentIndices = segments
-                .Select((segment, index) => (segment, index))
-                .Where(tuple => tuple.segment.Contains(' ') && tuple.segment.Length > 2)
-                .Select(tuple => tuple.index)
-                .ToArray();
-            if (viableSegmentIndices.Length == 0) return null;
-            int segmentIndex = viableSegmentIndices[Random.Shared.Next(viableSegmentIndices.Length)];
-
-            int segmentStartsAt = 0;
-            for (int i = 0; i < segments.Length; segmentStartsAt += 1 + segments[i].Length, ++i)
-            {
-                var word = segments[i];
-                if (i == segmentIndex) return (segmentStartsAt, word.Length, word.Select<char, char?>(c => c == ' ' ? null : c).ToArray());
-            }
-
-            return null;
-        }
 
         public static void Fill(char?[,] grid, int rowOrCol, Direction dir, int start, string word)
         {
@@ -791,35 +405,6 @@ namespace WordGenLib
                     grid[rowOrCol, start + i] = word[i];
                 }
             }
-        }
-
-        public static char? AtPosition(char?[,] grid, int rowOrCol, int position, Direction dir)
-        {
-            if (dir == Direction.Horizontal)
-                return grid[position, rowOrCol];
-            else return grid[rowOrCol, position];
-        }
-
-        public static int ClearanceFromStart(char?[,] grid, int rowOrCol, int posWithinLine, Direction dir)
-        {
-            int room = 0;
-            for (int pos = 0; pos < posWithinLine; ++pos)
-            {
-                if (BLOCKED == AtPosition(grid, rowOrCol, pos, dir)) room = 0;
-                else room += 1;
-            }
-            return room;
-        }
-
-        public static int ClearanceFromEnd(char?[,] grid, int rowOrCol, int posWithinLine, Direction dir)
-        {
-            int gridSize = grid.GetLength(0);
-            int pos = posWithinLine;
-            for (; pos < gridSize; ++pos)
-            {
-                if (BLOCKED == AtPosition(grid, rowOrCol, pos, dir)) break;
-            }
-            return pos - posWithinLine;
         }
     }
 
@@ -843,19 +428,6 @@ namespace WordGenLib
         public static HashSet<string> AllowedWords()
         {
             return new HashSet<string>(ALL_WORDS);
-        }
-
-        public static char?[] GetConstraints(char?[,] grid, int rowOrCol, int start, int length, Direction dir)
-        {
-            var cs = new List<char?>();
-
-            for (int i = 0; i < length; ++i)
-            {
-                var c = GenHelper.AtPosition(grid, rowOrCol, start + i, dir);
-                if (c == GenHelper.BLOCKED) break;
-                cs.Add(c);
-            }
-            return cs.ToArray();
         }
 
         public static string[] ReadLine(char?[,] grid, int rowOrCol, Direction dir)
