@@ -22857,11 +22857,6 @@ idiomatically
 idiopathically
 idiosyncrasies
 idiosyncratically
-idiot
-idiotic
-idiotically
-idiotly
-idiots
 idlily
 idling
 idlings
@@ -30506,11 +30501,6 @@ morgans
 moribundly
 moriguchi
 morningly
-moron
-moroni
-moronic
-moronically
-morons
 moroseness
 morpheme
 morphemes
@@ -41330,13 +41320,6 @@ retaliation
 retaliations
 retaliatorily
 retaliatory
-retard
-retardation
-retardations
-retarded
-retardedly
-retarding
-retards
 retention
 retentions
 retentive

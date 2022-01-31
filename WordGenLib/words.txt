@@ -2603,8 +2603,6 @@ bassos
 basswood
 basswoods
 bast
-bastard
-bastards
 baste
 basted
 baster
