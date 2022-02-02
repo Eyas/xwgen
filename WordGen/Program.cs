@@ -9,101 +9,92 @@ using static MoreLinq.Extensions.BatchExtension;
 Console.WriteLine("Hello, World!");
 
 //var existingWords = WordGenLib.GridReader.AllowedWords();
-HttpClientHandler handler = new();
-handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-HttpClient client = new(handler);
+//HttpClientHandler handler = new();
+//handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+//HttpClient client = new(handler);
 
-var allWords = File.ReadAllLines("../../../../WordGenLib/from-lexems.txt");
+var common = File.ReadAllLines("../../../../WordGenLib/words.txt").ToHashSet();
 
-var wikiapi  = @"https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&formatversion=2&srnamespace=0&srlimit=1&srwhat=text&srinfo=totalhits&srsearch=";
+
 File.WriteAllLines("../../../../WordGenLib/from-lexems.txt",
-    allWords
-    .Select((x, idx) =>
-    {
-        if (idx % 1000 == 0) Console.WriteLine($"{idx} - {x}...");
-        return x;
-    })
-    .Batch(25)
-    .SelectMany(batch =>
-    {
-        var keep = batch
-        .Where(title => title.Contains(' ') || title.Length > 20);
-
-        var filter = batch
-            .Where(title => !title.Contains(' ') && title.Length <= 20)
-            .Select(title => (title, client.GetAsync(wikiapi + Uri.EscapeDataString(title))))
-            .Select(async tuple =>
-            {
-                var title = tuple.title;
-                var response = await tuple.Item2;
-
-                using Stream stream = response.Content.ReadAsStream();
-                using StreamReader reader = new(stream);
-
-                var jsonString = reader.ReadToEnd();
-                var json = JsonNode.Parse(jsonString);
-
-                var totalHits = json?["query"]?["searchinfo"]?["totalhits"];
-                if (totalHits == null) throw new Exception("Unexpected total hits null in " + jsonString);
-
-                return (title, totalHits);
-            });
-        var resultsAsync = Task.WhenAll(filter);
-        resultsAsync.Wait();
-
-        return resultsAsync.Result
-            .Where(tuple => ((int)tuple.totalHits.AsValue()) > 50)
-            .Select(tuple => tuple.title)
-            .Concat(keep)
-            .OrderBy(word => word);
-    })
-    .Select((x, idx) =>
-    {
-        if (idx % 1000 == 0) Console.WriteLine($"\t\t\t\t{idx} written so far. {x}");
-        return x;
-    })
+File.ReadAllLines("../../../../WordGenLib/from-lexems.txt")
+    .Except(common)
     );
-//File.WriteAllLines("../../../wikipedia2.txt",
-//    File.ReadLines("../../../wikipedia.txt", Encoding.UTF8)
-//    .Where(title =>
-//    {
-//        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(wikiapi + Uri.EscapeDataString(title));
-//        request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
-//        using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-//        using (Stream stream = response.GetResponseStream())
-//        using (StreamReader reader = new StreamReader(stream))
+    //var wikiapi = @"https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&formatversion=2&srnamespace=0&srlimit=1&srwhat=text&srinfo=totalhits&srsearch=";
+////var wikiapi = @"https://www.wikidata.org/w/api.php?action=query&format=json&list=search&utf8=1&formatversion=2&srnamespace=0&srlimit=1&srwhat=text&srinfo=totalhits&srsearch=";
+
+////File.WriteAllLines("../../../../WordGenLib/words.txt",
+//var filterd =
+//    obscure
+//        //.Take(21153)
+//        //.Concat(
+//        //    allWords.Skip(21153)
+//        .Select((x, idx) =>
 //        {
-//            var jsonString = reader.ReadToEnd();
-//            var json = JsonNode.Parse(jsonString);
-//            var pageNode = json?["query"]?["pages"]?.AsArray()?[0];
+//            if (idx % 1000 == 0) Console.WriteLine($"[mto] {idx} - {x}...");
+//            return x;
+//        })
+//        .Batch(20)
+//        .SelectMany(batch =>
+//        {
+//            //var keep = batch.Where(word => word.Length > 6);
 
-//            if (pageNode == null) throw new Exception("JSON page node null in response\n" + jsonString + "\nrequest\n" + title);
+//            var filter = batch
+//                //.Where(title => title.Length <= 6)
+//                .Select(title => (title, client.GetAsync(wikiapi + Uri.EscapeDataString(title))))
+//                .Select(async tuple =>
+//                {
+//                    var title = tuple.title;
+//                    var response = await tuple.Item2;
 
-//            var links = pageNode?["linkshere"]?.AsArray();
-//            if (links == null) return false;
-//            return links.Count >= 25;
-//        }
-//    }));
+//                    using Stream stream = response.Content.ReadAsStream();
+//                    using StreamReader reader = new(stream);
 
-int gridSize = 10;  // 10 x 10
+//                    var jsonString = reader.ReadToEnd();
+//                    var json = JsonNode.Parse(jsonString);
 
+//                    var totalHits_ = json?["query"]?["searchinfo"]?["totalhits"];
+//                    if (totalHits_ == null) throw new Exception("Unexpected total hits null in " + jsonString);
+//                    var totalHits = (int)totalHits_.AsValue();
+
+//                    //var snippet = ( ( (string?) json?["query"]?["search"]?[0]?["snippet"]?.AsValue() ) ?? "" ).ToLower();
+//                    //var isPlace = snippet.Contains("town") || snippet.Contains("river") || snippet.Contains("road") || snippet.Contains("street") || snippet.Contains("city");
+//                    bool hasSpace = title.Contains(' ');
+
+//                    //bool include = (!isPlace && totalHits > 500) || totalHits > 5000;
+//                    bool include = totalHits > 10000;
+
+//                    return (title, include);
+//                });
+//            var resultsAsync = Task.WhenAll(filter);
+//            resultsAsync.Wait();
+
+//            return resultsAsync.Result
+//                .Where(tuple => tuple.include)
+//                .Select(tuple => tuple.title)
+//                //.Concat(keep)
+//                .OrderBy(word => word);
+//        })
+//        .Select((x, idx) =>
+//        {
+//            if (idx % 1000 == 0) Console.WriteLine($"\t\t\t\t{idx} written so far. {x}");
+//            return x;
+//        });
+//    //.Concat(allWords.Skip(21153))
+//    //)
+//    //);
+//    ;
+
+
+int gridSize = 5;  // 10 x 10
 var generator = WordGenLib.Generator.Create(gridSize);
-var grid = generator.GenerateGrid().First();
+var grids = generator.PossibleGrids().Take(5).Zip(Enumerable.Range(0, 5));
 
 
-for (int i = 0; i < gridSize; ++i)
+foreach (var (grid, idx) in grids)
 {
-    for (int j = 0; j < gridSize; ++j)
-    {
-        char cell = grid[i, j] switch
-        {
-            null => '_',
-            char v => v,
-        };
-
-        Console.Write(cell);
-        Console.Write(' ');
-    }
+    Console.WriteLine($"\nGrid {idx} / 5: \n");
+    Console.WriteLine(grid);
     Console.WriteLine();
 }
