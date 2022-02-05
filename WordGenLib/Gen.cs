@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using Crossword;
+using System.Collections.Immutable;
 
 namespace WordGenLib
 {
@@ -143,7 +144,7 @@ namespace WordGenLib
                 }
             }
             public bool DefinitelyBlockedAt(int index)
-                => Preferred.Concat(Obscure).All(word => word[index] == GenHelper.BLOCKED);
+                => Preferred.Concat(Obscure).All(word => word[index] == Constants.BLOCKED);
 
             public IPossibleLines Filter(CharSet constraint, int index)
             {
@@ -178,7 +179,7 @@ namespace WordGenLib
             public void CharsAt(CharSet accumulate, int index)
             {
                 if (accumulate.IsFull) return;
-                if (index == 0) accumulate.Add(GenHelper.BLOCKED);
+                if (index == 0) accumulate.Add(Constants.BLOCKED);
                 else Lines.CharsAt(accumulate, index - 1);
             }
             public bool DefinitelyBlockedAt(int index)
@@ -189,7 +190,7 @@ namespace WordGenLib
             public IPossibleLines Filter(CharSet constraint, int index)
                 => index switch
                 {
-                    0 => constraint.Contains(GenHelper.BLOCKED) ? this : Impossible.Instance(NumLetters),
+                    0 => constraint.Contains(Constants.BLOCKED) ? this : Impossible.Instance(NumLetters),
                     _ => Lines.Filter(constraint, index - 1) switch
                     {
                         Impossible => Impossible.Instance(NumLetters),
@@ -199,14 +200,14 @@ namespace WordGenLib
             public IPossibleLines Filter(char constraint, int index)
                 => index switch
                 {
-                    0 => constraint == GenHelper.BLOCKED ? this : Impossible.Instance(NumLetters),
+                    0 => constraint == Constants.BLOCKED ? this : Impossible.Instance(NumLetters),
                     _ => Lines.Filter(constraint, index - 1) switch
                     {
                         Impossible => Impossible.Instance(NumLetters),
                         IPossibleLines l => this with { Lines = l },
                     },
                 };
-            public IEnumerable<string> Iterate() => Lines.Iterate().Select(word => GenHelper.BLOCKED + word);
+            public IEnumerable<string> Iterate() => Lines.Iterate().Select(word => Constants.BLOCKED + word);
         }
         record BlockAfter(IPossibleLines Lines) : IPossibleLines
         {
@@ -215,7 +216,7 @@ namespace WordGenLib
             public void CharsAt(CharSet accumulate, int index)
             {
                 if (accumulate.IsFull) return;
-                if (index == NumLetters - 1) accumulate.Add(GenHelper.BLOCKED);
+                if (index == NumLetters - 1) accumulate.Add(Constants.BLOCKED);
                 else Lines.CharsAt(accumulate, index);
             }
             public bool DefinitelyBlockedAt(int index)
@@ -226,7 +227,7 @@ namespace WordGenLib
             public IPossibleLines Filter(CharSet constraint, int index)
                 => index switch
                 {
-                    _ when index == NumLetters - 1 => constraint.Contains(GenHelper.BLOCKED) ? this : Impossible.Instance(NumLetters),
+                    _ when index == NumLetters - 1 => constraint.Contains(Constants.BLOCKED) ? this : Impossible.Instance(NumLetters),
                     _ => Lines.Filter(constraint, index) switch
                     {
                         Impossible => Impossible.Instance(NumLetters),
@@ -236,14 +237,14 @@ namespace WordGenLib
             public IPossibleLines Filter(char constraint, int index)
                 => index switch
                 {
-                    _ when index == NumLetters - 1 => constraint == GenHelper.BLOCKED ? this : Impossible.Instance(NumLetters),
+                    _ when index == NumLetters - 1 => constraint == Constants.BLOCKED ? this : Impossible.Instance(NumLetters),
                     _ => Lines.Filter(constraint, index) switch
                     {
                         Impossible => Impossible.Instance(NumLetters),
                         IPossibleLines l => this with { Lines = l },
                     },
                 };
-            public IEnumerable<string> Iterate() => Lines.Iterate().Select(word => word + GenHelper.BLOCKED);
+            public IEnumerable<string> Iterate() => Lines.Iterate().Select(word => word + Constants.BLOCKED);
         }
         record BlockBetween(IPossibleLines First, IPossibleLines Second) : IPossibleLines
         {
@@ -252,7 +253,7 @@ namespace WordGenLib
             public void CharsAt(CharSet accumulate, int index)
             {
                 if (accumulate.IsFull) return;
-                if (index == First.NumLetters) accumulate.Add(GenHelper.BLOCKED);
+                if (index == First.NumLetters) accumulate.Add(Constants.BLOCKED);
                 else if (index < First.NumLetters) First.CharsAt(accumulate, index);
                 else Second.CharsAt(accumulate, index - (First.NumLetters + 1));
             }
@@ -265,7 +266,7 @@ namespace WordGenLib
             public IPossibleLines Filter(CharSet constraint, int index)
             {
                 if (constraint.IsFull) return this;
-                if (index == First.NumLetters) return constraint.Contains(GenHelper.BLOCKED) ? this : Impossible.Instance(NumLetters);
+                if (index == First.NumLetters) return constraint.Contains(Constants.BLOCKED) ? this : Impossible.Instance(NumLetters);
 
                 var first = index < First.NumLetters ? First.Filter(constraint, index) : First;
                 var second = index > First.NumLetters ? Second.Filter(constraint, index - (1 + First.NumLetters)) : Second;
@@ -281,7 +282,7 @@ namespace WordGenLib
             }
             public IPossibleLines Filter(char constraint, int index)
             {
-                if (index == First.NumLetters) return constraint == GenHelper.BLOCKED ? this : Impossible.Instance(NumLetters);
+                if (index == First.NumLetters) return constraint == Constants.BLOCKED ? this : Impossible.Instance(NumLetters);
 
                 var first = index < First.NumLetters ? First.Filter(constraint, index) : First;
                 var second = index > First.NumLetters ? Second.Filter(constraint, index - (1 + First.NumLetters)) : Second;
@@ -289,7 +290,7 @@ namespace WordGenLib
                 if (first is Impossible || second is Impossible) return Impossible.Instance(NumLetters);
                 return new BlockBetween(first, second);
             }
-            public IEnumerable<string> Iterate() => First.Iterate().SelectMany(first => Second.Iterate().Select(second => $"{first}{GenHelper.BLOCKED}{second}"));
+            public IEnumerable<string> Iterate() => First.Iterate().SelectMany(first => Second.Iterate().Select(second => $"{first}{Constants.BLOCKED}{second}"));
         }
         record Compound(ImmutableArray<IPossibleLines> Possibilities) : IPossibleLines
         {
@@ -350,7 +351,7 @@ namespace WordGenLib
             {
                 accumulate.Add(Line[index]);
             }
-            public bool DefinitelyBlockedAt(int index) => Line[index] == GenHelper.BLOCKED;
+            public bool DefinitelyBlockedAt(int index) => Line[index] == Constants.BLOCKED;
             public IPossibleLines Filter(CharSet constraint, int index)
                 => constraint.Contains(Line[index]) ? this : Impossible.Instance(NumLetters);
             public IPossibleLines Filter(char constraint, int index)
@@ -526,7 +527,7 @@ namespace WordGenLib
             // If board is > 35% blocked, it's not worth iterating in it.
             int numDefinitelyBlocked = root.Down
                 .Where(options => options.MaxPossibilities == 1)
-                .Sum(options => options.Iterate().First().Count(c => c == GenHelper.BLOCKED) );
+                .Sum(options => options.Iterate().First().Count(c => c == Constants.BLOCKED) );
             if (numDefinitelyBlocked > (root.Area * 0.35) )
             {
                 yield break;
@@ -721,8 +722,6 @@ namespace WordGenLib
 
     internal static class GenHelper
     {
-        public const char BLOCKED = '`';
-
         public static void FillRow(char?[,] grid, int row, string word)
         {
             for (int i = 0; i < word.Length; ++i)
@@ -760,12 +759,12 @@ namespace WordGenLib
 
         public static string[] DownWords(FinalGrid grid)
         {
-            return grid.Down.SelectMany(s => s.Split(GenHelper.BLOCKED)).Where(s => s.Length > 0).ToArray();
+            return grid.Down.SelectMany(s => s.Split(Constants.BLOCKED)).Where(s => s.Length > 0).ToArray();
         }
 
         public static string[] AcrossWords(FinalGrid grid)
         {
-            return grid.Across.SelectMany(s => s.Split(GenHelper.BLOCKED)).Where(s => s.Length > 0).ToArray();
+            return grid.Across.SelectMany(s => s.Split(Constants.BLOCKED)).Where(s => s.Length > 0).ToArray();
         }
     }
 
