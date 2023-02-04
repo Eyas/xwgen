@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.VisualBasic.FileIO;
+using System.Diagnostics;
 using System.Net;
 using System.Text;
 using System.Text.Json;
@@ -13,13 +14,26 @@ Console.WriteLine("Hello, World!");
 //handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 //HttpClient client = new(handler);
 
-var common = File.ReadAllLines("../../../../WordGenLib/words.txt").ToHashSet();
+Regex hasNumber = new("[0-9]");
 
-
-File.WriteAllLines("../../../../WordGenLib/from-lexems.txt",
-File.ReadAllLines("../../../../WordGenLib/from-lexems.txt")
-    .Except(common)
+File.WriteAllLines("../../../flashcards2.txt",
+File.ReadAllLines("../../../flashcards2.txt")
+    .Where(sentence => !hasNumber.IsMatch(sentence))
+    .Where(sentence => sentence.Length <= 25)
+    .Where(sentence => sentence.Length >= 3)
+    .Select(sentence => sentence.Replace('-', ' '))
+    .Except(File.ReadAllLines("../../../flashcards.txt"))
+    .DistinctBy(sentence => sentence.Replace(" ", ""))
+    .OrderBy(sentence=>sentence)
     );
+
+//File.WriteAllLines("../../../flashcards.txt", defs.Select(s => s.ToLower()).Distinct());
+
+
+//File.WriteAllLines("../../../../WordGenLib/from-lexems.txt",
+//File.ReadAllLines("../../../../WordGenLib/from-lexems.txt")
+//    .Except(common)
+//    );
 
     //var wikiapi = @"https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&formatversion=2&srnamespace=0&srlimit=1&srwhat=text&srinfo=totalhits&srsearch=";
 ////var wikiapi = @"https://www.wikidata.org/w/api.php?action=query&format=json&list=search&utf8=1&formatversion=2&srnamespace=0&srlimit=1&srwhat=text&srinfo=totalhits&srsearch=";

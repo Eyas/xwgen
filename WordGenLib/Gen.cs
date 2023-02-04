@@ -1,11 +1,12 @@
 ﻿using Crossword;
 using System.Collections.Immutable;
+using System.Reflection.Metadata.Ecma335;
 
 namespace WordGenLib
 {
-    public record class FinalGrid(ImmutableArray<string> Down, ImmutableArray<string> Across)
+    public record class FinalGrid(ImmutableArray<string> Across)
     {
-        public string Repr => string.Join('\n', Down);
+        public string Repr => string.Join('\n', Across);
     }
 
     public class CharSet
@@ -115,6 +116,26 @@ namespace WordGenLib
             }
 
             possibleLines = AllPossibleLines(gridSize);
+        }
+
+        public record struct WordInfo(WordInfo.InclusionType Inclusion)
+        {
+            public enum InclusionType { NOT_INCLUDED, COMMON, OBSCURE, EXCLUDED }
+        }
+
+        public WordInfo LookupWord(string word)
+        {
+            if (commonWordsByLength.ContainsKey(word.Length) && commonWordsByLength[word.Length].Contains(word))
+            {
+                return new WordInfo(WordInfo.InclusionType.COMMON);
+            }
+
+            if (obscureWordsByLength.ContainsKey(word.Length) && obscureWordsByLength[word.Length].Contains(word))
+            {
+                return new WordInfo(WordInfo.InclusionType.OBSCURE);
+            }
+
+            return new WordInfo(WordInfo.InclusionType.NOT_INCLUDED);
         }
 
         record struct ConcreteLine(string Line, ImmutableArray<string> Words) { }
@@ -251,7 +272,7 @@ namespace WordGenLib
                 };
             public IPossibleLines RemoveWordOption(string word)
             {
-                if (word.Length > Lines.NumLetters) return this;
+                if (word.Length >= Lines.NumLetters) return this;
                 var lines = Lines.RemoveWordOption(word);
 
                 if (lines == Lines) return this;
@@ -297,7 +318,7 @@ namespace WordGenLib
                 };
             public IPossibleLines RemoveWordOption(string word)
             {
-                if (word.Length > Lines.NumLetters) return this;
+                if (word.Length >= Lines.NumLetters) return this;
                 var lines = Lines.RemoveWordOption(word);
 
                 if (lines == Lines) return this;
@@ -336,12 +357,15 @@ namespace WordGenLib
 
                 if (combo.MaxPossibilities < 50)
                 {
-                    return new Compound(
-                        combo.Iterate()
+                    var choices = combo.Iterate()
                         .DistinctBy(l => l.Line)
                         .Select(l => new Definite(l))
-                        .ToImmutableArray<IPossibleLines>()
-                        );
+                        .ToImmutableArray<IPossibleLines>();
+                    return choices switch
+                    {
+                        { IsEmpty: true } => new Impossible(NumLetters),
+                        _ => new Compound(choices)
+                    };
                 }
                 else return combo;
             }
@@ -371,6 +395,7 @@ namespace WordGenLib
             public IEnumerable<ConcreteLine> Iterate() =>
                 First.Iterate()
                 .SelectMany(first => Second.Iterate()
+                    .Where(second => !second.Words.Intersect(first.Words).Any())
                     .Select(second => new ConcreteLine(
                         Line: $"{first.Line}{Constants.BLOCKED}{second.Line}",
                         Words: first.Words.AddRange(second.Words))
@@ -409,7 +434,7 @@ namespace WordGenLib
             {
                 var filtered = Possibilities
                     .Select(possible => possible.Filter(constraint, index))
-                    .Where(possible => possible is not Impossible)
+                    .Where(possible => possible is not Impossible && possible.MaxPossibilities > 0)
                     .ToImmutableArray();
 
                 if (filtered.Length == 0) return Impossible.Instance(NumLetters);
@@ -423,6 +448,9 @@ namespace WordGenLib
                         .Select(line => new Definite(line))
                         .ToImmutableArray<IPossibleLines>();
                 }
+
+                if (filtered.Length == 0) return Impossible.Instance(NumLetters);
+                else if (filtered.Length == 1) return filtered[0];
 
                 return new Compound(filtered);
             }
@@ -472,22 +500,24 @@ namespace WordGenLib
             public int SideLength => Down.Length;
             public int Area => SideLength * SideLength;
 
-            public int? UndecidedDown
-                => Down
-                .Select((options, index) => (options, index))
-                .Where(oi => oi.options.MaxPossibilities > 1)
-                .OrderBy(_ => Random.Shared.Next())
-                .OrderBy(oi => oi.options.MaxPossibilities)
-                .Select(oi => (int?)oi.index)
-                .FirstOrDefault();
-            public int? UndecidedAcross
-                => Across
-                .Select((options, index) => (options, index))
-                .Where(oi => oi.options.MaxPossibilities > 1)
-                .OrderBy(_ => Random.Shared.Next())
-                .OrderBy(oi => oi.options.MaxPossibilities)
-                .Select(oi => (int?)oi.index)
-                .FirstOrDefault();
+            private static int? GetUndecidedWLOG(ImmutableArray<IPossibleLines> Lines)
+            {
+                var options = Lines
+                    .Select((options, index) => (options, index))
+                    .Where(oi => oi.options.MaxPossibilities > 1);
+                if (!options.Any()) return null;
+
+                long min = options.Min(oi => oi.options.MaxPossibilities);
+
+                return options
+                    .Where(oi => oi.options.MaxPossibilities == min)
+                    .Select(oi => (int?)oi.index)
+                    .OrderBy(_ => Random.Shared.Next())
+                    .FirstOrDefault();
+            }
+            
+            public int? GetUndecidedDown() => GetUndecidedWLOG(Down);
+            public int? GetUndecidedAcross() => GetUndecidedWLOG(Across);
         }
         interface IPruneStrategy
         {
@@ -700,8 +730,8 @@ namespace WordGenLib
                 if (previouslyBlocked.All(v => v == true)) yield break;
             }
 
-            int? undecidedDown = root.UndecidedDown;
-            int? undecidedAcross = root.UndecidedAcross;
+            int? undecidedDown = root.GetUndecidedDown();
+            int? undecidedAcross = root.GetUndecidedAcross();
 
             if (undecidedDown == null && undecidedAcross == null)
             {
@@ -712,7 +742,6 @@ namespace WordGenLib
                     yield break;
 
                 yield return new FinalGrid(
-                    Down: down,
                     Across: across
                 );
                 yield break;
@@ -746,7 +775,7 @@ namespace WordGenLib
             var options = optionAxis[index];
 
             // The below loop "makes decisions" and recurses. If we already
-            // have one attempt, that means it's already pre-decided.
+            // have one possibility, that means it's already pre-decided.
             if (options.MaxPossibilities == 1) yield break;
 
             foreach (var attempt in options.Iterate())
@@ -774,7 +803,7 @@ namespace WordGenLib
                     if (attemptOpposite[i].MaxPossibilities == 1 && attemptOpposite[i].Iterate().First() == attempt) yield break;
                 }
 
-                if (attemptOpposite.All(opts => opts is not Impossible))
+                if (attemptOpposite.All(opts => opts is not Impossible && opts.MaxPossibilities > 0))
                 {
                     var oppositeFinal = attemptOpposite.ToImmutableArray();
                     var optionFinal = optionAxis
@@ -896,11 +925,6 @@ namespace WordGenLib
         public static HashSet<string> AllowedWords()
         {
             return new HashSet<string>(ALL_WORDS);
-        }
-
-        public static string[] DownWords(FinalGrid grid)
-        {
-            return grid.Down.SelectMany(s => s.Split(Constants.BLOCKED)).Where(s => s.Length > 0).ToArray();
         }
 
         public static string[] AcrossWords(FinalGrid grid)
