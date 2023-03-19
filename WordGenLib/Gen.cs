@@ -1016,7 +1016,15 @@ namespace WordGenLib
 
                         if (attemptOpposite.Zip(optionFinal)
                             .Where(ab => ab.First.MaxPossibilities == 1 && ab.Second.MaxPossibilities == 1)
-                            .Any(ab => ab.First.Iterate().First() == ab.Second.Iterate().First()))
+                            .Any(ab =>
+                            {
+                                var f = ab.First.Iterate().Select(i => i as ConcreteLine?).FirstOrDefault();
+                                var s = ab.Second.Iterate().Select(i => i as ConcreteLine?).FirstOrDefault();
+
+                                if (f == s && f != null) return true;
+                                return false;
+                            }
+                            ))
                             yield break;
 
                         var newRoot = (dir == Direction.Horizontal) ?
