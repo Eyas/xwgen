@@ -17,6 +17,8 @@ access
 accessor
 account
 acer
+acl
+acls
 acm
 acquire
 acrobat
@@ -37,6 +39,7 @@ adsl
 adt
 adventure
 adversary
+adware
 aero
 affiliate
 affordance
@@ -67,6 +70,7 @@ all
 alloc
 allocate
 allocations
+allow
 allowlist
 aloha
 alpha
@@ -109,6 +113,8 @@ aol
 aot
 apache
 api
+apikey
+apis
 app
 appbundle
 apple
@@ -167,6 +173,8 @@ atmost
 atom
 atomic
 att
+attach
+attached
 attr
 attribute
 audio
@@ -186,6 +194,8 @@ autos
 aux
 average
 averagecase
+avg
+avx
 await
 awaited
 awk
@@ -195,6 +205,8 @@ baba
 babel
 backbone
 backbonejs
+backdoor
+backdoors
 backend
 backlink
 backspace
@@ -204,6 +216,7 @@ badgateway
 badrequest
 baidu
 bandwidth
+bar
 bard
 base
 baseclass
@@ -212,6 +225,7 @@ basic
 batch
 bayes
 bayesian
+baz
 bazel
 bdfl
 beer
@@ -277,6 +291,8 @@ boot
 booting
 bootstrap
 borrow
+bot
+botnet
 bottomtype
 bottomup
 bound
@@ -346,6 +362,7 @@ capacity
 capital
 caps
 capslock
+captcha
 caption
 captions
 capture
@@ -370,9 +387,12 @@ category
 cbegin
 cctld
 cdn
+cdr
 cdrom
 cdrw
 cds
+ceil
+ceiling
 celeron
 cell
 cells
@@ -403,6 +423,7 @@ characters
 chart
 charts
 chat
+chatbot
 chatgpt
 chatroom
 chatrooms
@@ -440,6 +461,7 @@ cisco
 cite
 civ
 civilization
+clamp
 clang
 class
 classa
@@ -483,6 +505,9 @@ clustering
 clusters
 cmake
 cmd
+cmdc
+cmdkey
+cmdv
 cmp
 cnn
 coalesce
@@ -652,6 +677,7 @@ correctly
 corrupt
 corrupted
 corruption
+cors
 cos
 cosine
 cost
@@ -660,6 +686,7 @@ count
 counted
 counter
 counters
+countif
 countries
 country
 course
@@ -687,8 +714,10 @@ creates
 creating
 creation
 creations
+cred
 credential
 credentials
+creds
 critical
 crlf
 crm
@@ -704,10 +733,13 @@ csail
 csat
 csco
 csharp
+csrf
 css
 csv
 cto
 ctrl
+ctrlc
+ctrlv
 cube
 cubes
 cubic
@@ -768,6 +800,7 @@ day
 days
 dbms
 dbs
+ddos
 dead
 deadcode
 deadline
@@ -871,6 +904,7 @@ demote
 demoted
 demotion
 demotions
+denial
 denied
 dennis
 deno
@@ -1149,6 +1183,7 @@ exhaustive
 experiment
 expired
 explode
+exploit
 explorer
 exponential
 express
@@ -1170,6 +1205,7 @@ fdisk
 fedora
 feedback
 fetch
+fetching
 ffmpeg
 fft
 fib
@@ -1216,6 +1252,7 @@ flexbox
 flexstart
 float
 floats
+floor
 floppy
 flowchart
 floyd
@@ -1227,6 +1264,8 @@ folding
 follower
 followers
 folly
+foo
+foobar
 footer
 for
 forbidden
@@ -1250,10 +1289,12 @@ framework
 frameworks
 france
 free
+freebie
 freebsd
 freecell
 freedom
 freemium
+freeware
 front
 frontend
 frontpage
@@ -1266,6 +1307,7 @@ function
 functional
 functor
 future
+fuzzing
 fuzzy
 game
 gamedev
@@ -1289,6 +1331,7 @@ gecko
 gedit
 geforce
 gem
+genai
 generative
 generator
 generic
@@ -1385,6 +1428,8 @@ handler
 haptic
 haptics
 hard
+harden
+hardening
 hardlink
 hardware
 harmful
@@ -1431,6 +1476,7 @@ hilbert
 history
 hittarget
 hlir
+hlookup
 hold
 home
 homebrew
@@ -1483,6 +1529,7 @@ identifier
 identity
 idisposable
 idiv
+idx
 ieee
 ifconfig
 ifdef
@@ -1529,6 +1576,8 @@ ini
 init
 initialize
 initialized
+inject
+injection
 ink
 inkjet
 inkscape
@@ -1651,6 +1700,7 @@ kebabcase
 kernel
 key
 keyboard
+keylogger
 keynote
 keys
 keyword
@@ -1729,8 +1779,11 @@ libc
 libraries
 library
 libs
+license
 lidar
 lift
+limit
+limits
 linear
 linearsearch
 lineending
@@ -1801,6 +1854,7 @@ longestpath
 longitude
 longlong
 look
+lookup
 loop
 lossless
 lossy
@@ -1931,6 +1985,7 @@ microservice
 microsoft
 microusb
 middleware
+mimd
 mime
 mimetype
 min
@@ -1946,6 +2001,7 @@ minor
 minsky
 mint
 minwidth
+misd
 mit
 mitcsail
 mkdir
@@ -1955,6 +2011,7 @@ mlp
 mmo
 mmorpg
 mmu
+mmx
 mnt
 mobiledev
 mocha
@@ -1996,6 +2053,7 @@ moving
 movl
 movw
 mpeg
+mpmd
 msaccess
 msb
 msdos
@@ -2172,6 +2230,7 @@ optimize
 optimizer
 option
 optional
+options
 oracle
 orcl
 order
@@ -2318,6 +2377,7 @@ portal
 portals
 ports
 positive
+post
 postgresql
 pow
 power
@@ -2326,17 +2386,23 @@ powerpoint
 powershell
 ppt
 pptx
+pre
 precision
 precompile
 precompiled
 precondition
+preconnect
 predicate
 predicates
 prefab
+prefetch
 prefix
 prefixes
+preflight
+preload
 prelude
 preludes
+prerender
 present
 presenter
 primary
@@ -2417,6 +2483,8 @@ quines
 quit
 quits
 qunit
+quota
+quotas
 qwik
 qwikjs
 qword
@@ -2437,7 +2505,10 @@ randomwalk
 range
 rank
 ranks
+ransom
 rarp
+rate
+ratelimit
 ratio
 rax
 ray
@@ -2464,6 +2535,7 @@ reassign
 rebase
 reboot
 recall
+recaptcha
 recombine
 recombined
 recombines
@@ -2475,6 +2547,7 @@ recurrent
 recurse
 recursion
 recursive
+recycle
 redalert
 redblacktree
 redhat
@@ -2609,6 +2682,7 @@ rom
 root
 rootcert
 rootdir
+rootkit
 rot
 route
 router
@@ -2666,6 +2740,7 @@ scalability
 scalar
 scale
 scanner
+scareware
 schedule
 scheduler
 schedules
@@ -2692,6 +2767,8 @@ scrolling
 scrolls
 scrum
 scss
+sde
+sdet
 sealed
 seamonkey
 search
@@ -2746,6 +2823,7 @@ shallow
 shannon
 sharedptr
 sharepoint
+shareware
 sheet
 sheets
 shell
@@ -2775,6 +2853,7 @@ sigquit
 sigterm
 simant
 simcity
+simd
 sims
 simulation
 sin
@@ -2782,6 +2861,7 @@ sine
 singlepoint
 singleton
 siperight
+sisd
 six
 sixteen
 size
@@ -2833,6 +2913,7 @@ space
 spacebar
 spaces
 spam
+spamming
 span
 spanner
 spanning
@@ -2849,13 +2930,17 @@ splice
 split
 splits
 splitter
+spmd
 spof
+spoof
+spoofing
 spread
 spreadsheet
 spreadsheets
 spring
 sprint
 sprintf
+spyware
 sql
 sqlinjection
 sqlite
@@ -2953,6 +3038,8 @@ sudo
 suffix
 suffixes
 sugar
+sum
+sumif
 super
 supertype
 surface
@@ -2963,6 +3050,7 @@ svg
 svn
 swap
 swaps
+swe
 sweden
 swedish
 swift
@@ -3063,6 +3151,7 @@ theverge
 thinkpad
 thirteen
 this
+thispc
 thread
 threaded
 threadpool
@@ -3123,6 +3212,7 @@ transitive
 transpile
 transpiled
 transpiles
+trash
 traveling
 travis
 tree
@@ -3280,6 +3370,7 @@ visitor
 visual
 vite
 vitejs
+vlookup
 vms
 vmw
 vmware
@@ -3345,6 +3436,7 @@ winamp
 window
 windows
 windowsxp
+winkey
 winui
 winxp
 wired
@@ -3380,11 +3472,16 @@ xenon
 xerox
 xeroxparc
 xhtml
+xlookup
 xls
 xlsx
 xml
+xmlhttp
+xmm
 xor
 xorgate
+xsrf
+xss
 xunit
 yahoo
 yaml
@@ -3395,10 +3492,12 @@ years
 yield
 yieldbreak
 yieldreturn
+ymm
 zero
 zeus
 zip
 ziv
+zmm
 zoom
 zuck
 zune
