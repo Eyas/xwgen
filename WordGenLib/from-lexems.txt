@@ -1,4 +1,3 @@
-a cappella
 a piacere
 a posteriori
 a priori
@@ -352,7 +351,6 @@ afforested
 afforesting
 afforests
 affrays
-aficionado
 aficionados
 afield
 afterburner
@@ -862,8 +860,6 @@ anticyclonically
 antidepressant
 antidepressants
 antidotally
-antidote
-antidotes
 antifreeze
 antifreezes
 antifungally
@@ -1085,7 +1081,6 @@ arrowhead
 arrowheads
 arrowsmith
 arrowsmiths
-arsenic
 arsenics
 arsenide
 arsenides
@@ -2918,7 +2913,6 @@ carrels
 carrion
 carrions
 cartagena
-carte blanche
 cartilaginous
 cartilaginously
 cartographer
@@ -3020,7 +3014,6 @@ cautiousness
 cavalcade
 cavalcades
 cavalryman
-caveat
 caveats
 cavernously
 caviar
@@ -3194,7 +3187,6 @@ cheerful
 cheerfully
 cheerfulness
 cheerios
-cheeseburger
 cheeseburgers
 chelation
 chelonian
@@ -3283,7 +3275,6 @@ chlamydias
 chloral
 chlorate
 chlorates
-chlorinate
 chlorinated
 chlorinates
 chlorinating
@@ -3337,7 +3328,6 @@ chromatography
 chroming
 chromite
 chromites
-chromium
 chromiums
 chromogenically
 chromospherically
@@ -3594,7 +3584,6 @@ coastguards
 coastwise
 coaxial
 coaxially
-cob
 cobbler
 cobblers
 cobblestone
@@ -5845,7 +5834,6 @@ dorso ventrally
 dorsolateral
 dorsolaterally
 dorsoventral
-dosa
 dosas
 dosimeter
 dosimeters
@@ -6470,7 +6458,6 @@ en creux
 en famille
 en femme
 en homme
-en masse
 en passant
 en plein air
 en pointe
@@ -6636,14 +6623,12 @@ entwining
 envelopment
 envelopments
 envied
-envies
 envisage
 envisaged
 envisages
 envisaging
 envision
 envisions
-envy
 envying
 enzymatically
 enzymologies
@@ -6774,7 +6759,6 @@ erections
 erfurt
 erg
 ergatively
-ergo
 ergodic
 ergodically
 ergodicity
@@ -8531,7 +8515,6 @@ gravidly
 gravies
 gravimetric
 gravimetrically
-gravitas
 gravitationally
 graviton
 gravitons
@@ -9007,7 +8990,6 @@ heliopolis
 heliotrope
 heliotropes
 heliotropically
-helium
 heliums
 hella
 hellenistically
@@ -11120,7 +11102,6 @@ ladyfinger
 laggingly
 lahar
 lahars
-laissez faire
 laities
 laity
 lakeshore
@@ -11196,7 +11177,6 @@ laryngology
 laryngoscopically
 larynx
 larynxes
-lasagna
 lasagnas
 lascivious
 lasciviously
@@ -11302,7 +11282,6 @@ legation
 legations
 legato
 leggero
-leghorn
 leghorns
 legibilities
 legitimize
@@ -11502,7 +11481,6 @@ lithe
 lithely
 litheness
 lither
-lithium
 lithiums
 lithographic
 lithographically
@@ -11690,7 +11668,6 @@ lurch
 lurched
 lurches
 lurching
-lusaka
 lustier
 lustily
 lustiness
@@ -11786,7 +11763,6 @@ magmas
 magmatically
 magnesia
 magnesias
-magnesium
 magnetar
 magnetars
 magnetization
@@ -12007,7 +11983,6 @@ martingales
 martyrdom
 martyrdoms
 marvellously
-marzipan
 marzipans
 mascara
 mascaras
@@ -13045,7 +13020,6 @@ mussel
 mussels
 mussily
 mussy
-mustard
 mustards
 mustelid
 mustelids
@@ -13105,8 +13079,6 @@ myopically
 myriad
 myriads
 mythos
-nacho
-nachos
 nacre
 nacres
 naffly
@@ -15451,7 +15423,6 @@ poring
 porkchop
 porkier
 porkily
-porky
 porosities
 porosity
 porously
@@ -15813,7 +15784,6 @@ pristine
 pristinely
 prively
 privets
-pro bono
 proactively
 probabilistic
 probabilistically
@@ -16177,7 +16147,6 @@ puzzlers
 pygmies
 pylori
 pyloric
-pyongyang
 pyrex
 pyridine
 pyridines
@@ -17294,7 +17263,6 @@ roadkill
 roadkills
 roadmap
 roadmaps
-roadrunner
 roadrunners
 roan
 roans
@@ -17519,7 +17487,6 @@ samarkand
 sambuca
 samizdat
 samizdats
-sanaa
 sanatively
 sanatoria
 sanctity
@@ -17569,7 +17536,6 @@ sardine
 sardines
 sargasso
 sarkily
-sashimi
 sashimis
 sassafras
 sassafrases
@@ -18589,8 +18555,6 @@ snowdrift
 snowdrifts
 snowdrop
 snowdrops
-snowflake
-snowflakes
 snowmobile
 snowmobiled
 snowmobiles
@@ -19438,7 +19402,6 @@ suchly
 suckle
 suckled
 suckles
-suckling
 sucklings
 sudanese
 suds
@@ -19792,7 +19755,6 @@ syringe
 syringed
 syringes
 syringing
-syrup
 syrups
 systematization
 systematizations
@@ -20210,7 +20172,6 @@ tidily
 tidore
 tightrope
 tightropes
-tikka
 tikkas
 till death do us part
 till death us do part
@@ -20388,7 +20349,6 @@ torsionally
 torsions
 tortilla
 tortillas
-tortoise
 tortoises
 tortuously
 tortuousness
@@ -20418,7 +20378,6 @@ townsville
 toxicologically
 toxicologies
 toxicologist
-toxicology
 toxinology
 toxoplasmosis
 trachea
@@ -21680,8 +21639,6 @@ venereally
 venison
 venisons
 venlo
-venom
-venomous
 venomously
 venoms
 venous
@@ -21710,10 +21667,8 @@ verbalized
 verbalizes
 verbalizing
 verbally
-verbatim
 verbena
 verbenas
-verboten
 verdant
 verdantly
 verdure
@@ -22826,7 +22781,6 @@ zebu
 zebus
 zed
 zeds
-zeitgeist
 zeitgeists
 zenithally
 zenobia
