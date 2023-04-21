@@ -23,6 +23,7 @@ aardvark
 aardvarks
 aaron
 aarons
+aarp
 aba
 abalone
 abalones
@@ -989,6 +990,8 @@ aircrew
 aircrews
 aired
 aires
+airfare
+airfares
 airfield
 airfields
 airflow
@@ -1892,6 +1895,7 @@ apostolically
 apostrophe
 apostrophes
 apotheosis
+app
 appalled
 appalling
 appallingly
@@ -2024,6 +2028,8 @@ approximations
 approximatively
 approximator
 approximators
+apps
+appstore
 apricot
 apricots
 april
@@ -2906,6 +2912,7 @@ autonomy
 autopsy
 autopsying
 autos
+autoslash
 autumn
 autumns
 aux
@@ -4624,6 +4631,7 @@ book of the dead
 book wise
 booked
 booking
+bookingcom
 bookings
 bookkeeper
 bookkeepers
@@ -6783,6 +6791,7 @@ check out
 checked
 checker
 checkers
+checkin
 checking
 checklist
 checklists
@@ -9255,6 +9264,7 @@ costa
 costa rica
 costal
 costas
+costco
 costing
 costliness
 costly
@@ -11372,6 +11382,7 @@ dictionary
 dictions
 did
 did not
+didnt
 die
 die casting
 died
@@ -14549,6 +14560,7 @@ expectations
 expected
 expecting
 expects
+expedia
 expediency
 expedient
 expedients
@@ -14992,6 +15004,7 @@ farced
 farces
 fare
 fared
+farelock
 fares
 farewell
 farewells
@@ -16552,6 +16565,7 @@ frosts
 frozen
 frozenly
 fructose
+frugal
 fruit
 fruited
 fruiting
@@ -18426,6 +18440,7 @@ hashed
 hashes
 hashing
 hashish
+hassle
 hassled
 hassles
 hasten
@@ -22800,6 +22815,7 @@ legitimating
 legitimation
 legitimations
 legs
+legwork
 lei
 leicester
 leicesters
@@ -24228,6 +24244,7 @@ married
 marrieds
 marries
 marring
+marriott
 marry
 marrying
 marseillaise
@@ -26653,6 +26670,7 @@ nonlinear
 nonpartisan
 nonprofit
 nonprofits
+nonrefundable
 nonsense
 nonspecific
 nontraditional
@@ -27269,6 +27287,7 @@ ongoing
 ongoingly
 onion
 onions
+online
 only
 only just
 onset
@@ -27282,6 +27301,7 @@ ontological
 ontologically
 ontologies
 ontology
+onus
 onward
 onwards
 oops
@@ -27426,6 +27446,7 @@ orbiter
 orbiters
 orbiting
 orbits
+orbitz
 orbs
 orchard
 orchards
@@ -28392,6 +28413,7 @@ passiveness
 passives
 passport
 passports
+passthrough
 password
 passwords
 past
@@ -30263,6 +30285,7 @@ preoccupation
 preoccupations
 preoccupied
 prep
+prepaid
 preparation
 preparations
 preparative
@@ -30365,6 +30388,7 @@ pretending
 pretends
 pretense
 pretoria
+pretravel
 prettier
 prettiness
 pretty
@@ -31996,6 +32020,7 @@ rebelliousness
 rebels
 rebirth
 rebirths
+rebook
 reborn
 rebound
 rebounded
@@ -32421,6 +32446,9 @@ refuge
 refugee
 refugees
 refuges
+refund
+refundable
+refunds
 refurbish
 refurbished
 refurbishes
@@ -33963,6 +33991,7 @@ roundings
 roundly
 roundness
 rounds
+roundtrip
 roundup
 roundups
 rouse
@@ -39890,6 +39919,7 @@ thereafter
 thereby
 therefore
 thereof
+theres
 theresa
 therese
 thereto
@@ -40109,6 +40139,7 @@ tianjin
 tiberius
 tibetan
 tibetans
+tick
 tickers
 ticket
 ticketed
@@ -40330,6 +40361,7 @@ tobogganing
 toboggans
 toby
 tod
+today
 todays
 todd
 toddler
@@ -40836,6 +40868,7 @@ travel restriction
 travel restrictions
 traveled
 traveler
+travelers
 traveling
 travelled
 travels
@@ -42902,6 +42935,7 @@ wonderland
 wonderlands
 wonderly
 wonders
+wont
 woo
 wood
 wooded
@@ -42985,6 +43019,7 @@ worthies
 worthily
 worthiness
 worths
+worthwhile
 worthy
 would
 would be
@@ -43147,6 +43182,7 @@ you have
 you know what
 you will
 you would
+youll
 young
 younger
 youngest
