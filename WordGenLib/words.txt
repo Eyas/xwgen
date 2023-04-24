@@ -147,6 +147,7 @@ abrogates
 abrupt
 abruptly
 abruptness
+abs
 abscond
 absconded
 absconder
@@ -216,7 +217,9 @@ abusive
 abusively
 abutment
 abutments
+abv
 abyss
+aca
 academia
 academias
 academic
@@ -228,6 +231,7 @@ academics
 academies
 academy
 acapulco
+acc
 accede
 acceded
 accedes
@@ -576,6 +580,7 @@ adhesive
 adhesives
 adidas
 adieu
+adj
 adjacencies
 adjacency
 adjacent
@@ -714,6 +719,7 @@ adulthood
 adulthoods
 adultly
 adults
+adv
 advance
 advanced
 advancement
@@ -1029,9 +1035,11 @@ airways
 airy
 aisle
 aisles
+aka
 akin
 akron
 al dente
+ala
 alabama
 alabaster
 alabasters
@@ -1354,6 +1362,7 @@ alvin
 always
 aly
 am not
+ama
 amal
 amalgam
 amalgamate
@@ -1442,6 +1451,7 @@ americas
 amethyst
 amethysts
 amex
+ami
 amicable
 amicably
 amid
@@ -2446,6 +2456,7 @@ asker
 askew
 asking
 asks
+asl
 asleep
 aspect
 aspects
@@ -2476,6 +2487,7 @@ aspired
 aspires
 aspiring
 asps
+ass
 assail
 assailed
 assailing
@@ -2967,6 +2979,7 @@ averted
 averting
 averts
 avery
+avg
 aviation
 aviations
 aviator
@@ -3020,6 +3033,7 @@ awkward
 awkwardly
 awkwardness
 awry
+aww
 axe
 axel
 axes
@@ -3145,6 +3159,7 @@ badly
 badminton
 badmintons
 badness
+bae
 bag
 bagatelle
 bagatelles
@@ -3999,6 +4014,8 @@ bey
 beyond
 beyond measure
 beys
+bfa
+bfd
 bhutan
 bialy
 bialys
@@ -4533,6 +4550,7 @@ bobtails
 bocage
 bock
 bocks
+bod
 bode
 boded
 bodes
@@ -4863,6 +4881,7 @@ boyfriend
 boyfriends
 boys
 bpm
+bra
 brace
 braced
 bracelet
@@ -4975,6 +4994,7 @@ brazens
 brazil
 brazilian
 brazilians
+brb
 breach
 breached
 breaches
@@ -9503,6 +9523,7 @@ coyotes
 coziness
 cozy
 cozying
+cpi
 cpu
 cpus
 crab
@@ -12282,6 +12303,8 @@ dizzying
 djibouti
 dmo
 dna
+dnc
+dnd
 do not
 doable
 dob
@@ -25087,6 +25110,7 @@ mezzanine
 mezzanines
 mezzo
 mezzos
+mfa
 mia
 miami
 miao
@@ -25493,6 +25517,7 @@ misuse
 misused
 misuses
 misusing
+mit
 mitch
 mitchell
 mitchells
@@ -25511,6 +25536,7 @@ mitochondrial
 mitochondrion
 mitosis
 mitt
+mitten
 mittens
 mitts
 mix
@@ -28341,6 +28367,7 @@ pantographs
 pants
 panzer
 panzers
+pap
 papa
 papal
 papally
@@ -31244,6 +31271,8 @@ pseudoscientific
 psi
 psis
 psoriasis
+psy
+psych
 psychedelia
 psychedelic
 psyches
@@ -31277,6 +31306,7 @@ psychopaths
 psychotherapist
 psychotherapists
 psychotherapy
+psyduck
 ptolemy
 pts
 pub
@@ -36196,6 +36226,7 @@ signoras
 signore
 signors
 signs
+sike
 sikh
 sikhism
 silence
@@ -39304,6 +39335,7 @@ sycamores
 syd
 sydney
 sydneys
+syke
 syllable
 syllables
 sylvester
@@ -41985,6 +42017,7 @@ update
 updated
 updates
 updating
+upenn
 upgrade
 upgraded
 upgrades
