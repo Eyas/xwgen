@@ -13085,6 +13085,7 @@ eclipse
 eclipsed
 eclipses
 eclipsing
+eco
 ecole
 ecoles
 ecologic
@@ -13234,6 +13235,7 @@ eighths
 eighties
 eights
 eighty
+ein
 eisenhower
 either
 either way
@@ -13529,6 +13531,7 @@ emmas
 emmett
 emmy
 emmys
+emo
 emory
 emotion
 emotional
@@ -13975,6 +13978,7 @@ enumerators
 enunciate
 enunciated
 enunciates
+env
 envelop
 envelope
 enveloped
@@ -14005,10 +14009,12 @@ enzymes
 enzymically
 eon
 eons
+eoy
 epa
 ephemera
 ephesians
 ephraim
+epi
 epic
 epics
 epidemic
@@ -14036,6 +14042,7 @@ eponymous
 eponymously
 eponyms
 epoxy
+eps
 equal
 equaled
 equaling
@@ -15065,6 +15072,7 @@ falsifier
 falsifiers
 falsify
 falsifying
+fam
 fame
 famed
 fames
@@ -15236,6 +15244,7 @@ fauns
 fauntleroy
 faux
 faux pas
+fav
 favor
 favorable
 favorably
@@ -17214,6 +17223,7 @@ genuine
 genuinely
 genuineness
 genus
+geo
 geocentric
 geocoordinate
 geocoordinates
@@ -18086,6 +18096,7 @@ grumbles
 grundy
 gryphon
 gryphons
+gtg
 guadalajara
 guadeloupe
 guam
@@ -19190,6 +19201,7 @@ hittite
 hiv
 hive
 hived
+hmm
 hoard
 hoarded
 hoarder
@@ -19219,6 +19231,7 @@ hod
 hodge
 hodgkin
 hods
+hoe
 hog
 hogan
 hogans
