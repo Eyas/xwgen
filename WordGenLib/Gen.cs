@@ -1205,7 +1205,7 @@ namespace WordGenLib
             return AllPossibleGrids(state).DistinctBy(x => x.Repr);
         }
 
-        public IEnumerable<FinalGrid> PossibleGridWithConstraints(char[,] constraints)
+        public IEnumerable<FinalGrid> PossibleGridWithConstraints(char[,] constraints, bool addExtraBlocks)
         {
             if (constraints == null) throw new ArgumentNullException(nameof(constraints));
             if (constraints.GetLength(0) != gridSize || constraints.GetLength(1) != gridSize) throw new ArgumentException($"{nameof(constraints)} should have size {GridSize} x {GridSize}");
@@ -1214,15 +1214,21 @@ namespace WordGenLib
             string[] downTemplates = Enumerable.Range(0, gridSize).Select(x => string.Join("", Enumerable.Range(0, gridSize).Select(y => constraints[x, y]))).ToArray();
 
             GridState state = new(
-                Down: Enumerable.Range(0, gridSize).Select(i => CompatibleLines(downTemplates[i])).ToImmutableArray(),
-                Across: Enumerable.Range(0, gridSize).Select(i => CompatibleLines(acrossTemplates[i])).ToImmutableArray()
+                Down: Enumerable.Range(0, gridSize).Select(i => CompatibleLines(downTemplates[i], addExtraBlocks)).ToImmutableArray(),
+                Across: Enumerable.Range(0, gridSize).Select(i => CompatibleLines(acrossTemplates[i], addExtraBlocks)).ToImmutableArray()
             );
             if (IsBoardDefinitelyDivided(state)) return Enumerable.Empty<FinalGrid>();
 
             return AllPossibleGrids(state).DistinctBy(x => x.Repr);
         }
 
-        private IPossibleLines CompatibleLines(string template)
+        private IPossibleLines CompatibleLines(string template, bool addExtraBlocks)
+        {
+            if (addExtraBlocks) return CompatibleLinesExtraBlocks(template);
+            else return CompatibleLinesNoExtraBlocks(template);
+        }
+
+        private IPossibleLines CompatibleLinesExtraBlocks(string template)
         {
             if (template.All(x => x == ' ')) return possibleLines;
             if (template.All(x => x != ' ')) return new Definite(new (
@@ -1239,9 +1245,55 @@ namespace WordGenLib
             return lines;
         }
 
-        public  IEnumerable<string> CompatibleLineStrings(string template)
+        private IPossibleLines CompatibleLinesNoExtraBlocks(string template)
         {
-            return CompatibleLines(template).Iterate().Select(l => l.Line);
+            var trimStart = template.TrimStart(Constants.BLOCKED);
+            var startBlocks = template.Length - trimStart.Length;
+            var trimEnd = trimStart.TrimEnd(Constants.BLOCKED);
+            var endBlocks = trimStart.Length - trimEnd.Length;
+
+            IPossibleLines Wrap(IPossibleLines inner)
+            {
+                for (;  startBlocks > 0; startBlocks--)
+                {
+                    inner = new BlockBefore(inner);
+                }
+                for (; endBlocks > 0; endBlocks--)
+                {
+                    inner = new BlockAfter(inner);
+                }
+                return inner;
+            }
+
+            var indexOfBlocked = trimEnd.IndexOf(Constants.BLOCKED);
+            if (indexOfBlocked == -1 )
+            {
+                IPossibleLines words = new Words(
+                    Preferred:
+                        commonWordsByLength[trimEnd.Length]
+                            .OrderBy(_ => Random.Shared.Next(int.MaxValue))
+                            .ToImmutableArray(),
+                    Obscure:
+                        obscureWordsByLength[trimEnd.Length]
+                            .OrderBy(_ => Random.Shared.Next(int.MaxValue))
+                            .ToImmutableArray()
+                    );
+
+                for (int i = 0; i < trimEnd.Length; i++)
+                {
+                    if (trimEnd[i] == ' ') continue;
+                    words = words.Filter(trimEnd[i], i);
+                }
+
+                return Wrap(words);
+            }
+            var firstSegment = trimEnd[..indexOfBlocked];
+            var secondSegment = trimEnd[(1 + indexOfBlocked)..];
+
+            return Wrap(new BlockBetween(
+                First: CompatibleLinesNoExtraBlocks(firstSegment),
+                Second: CompatibleLinesNoExtraBlocks(secondSegment)
+            ));
         }
     }
 
