@@ -1,11 +1,4 @@
-﻿using Microsoft.VisualBasic.FileIO;
-using System.Diagnostics;
-using System.Net;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Text.RegularExpressions;
-using static MoreLinq.Extensions.BatchExtension;
+﻿using System.Text.RegularExpressions;
 
 Console.WriteLine("Hello, World!");
 
@@ -24,7 +17,7 @@ File.ReadAllLines("../../../flashcards2.txt")
     .Select(sentence => sentence.Replace('-', ' '))
     .Except(File.ReadAllLines("../../../flashcards.txt"))
     .DistinctBy(sentence => sentence.Replace(" ", ""))
-    .OrderBy(sentence=>sentence)
+    .OrderBy(sentence => sentence)
     );
 
 //File.WriteAllLines("../../../flashcards.txt", defs.Select(s => s.ToLower()).Distinct());
@@ -35,7 +28,7 @@ File.ReadAllLines("../../../flashcards2.txt")
 //    .Except(common)
 //    );
 
-    //var wikiapi = @"https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&formatversion=2&srnamespace=0&srlimit=1&srwhat=text&srinfo=totalhits&srsearch=";
+//var wikiapi = @"https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&formatversion=2&srnamespace=0&srlimit=1&srwhat=text&srinfo=totalhits&srsearch=";
 ////var wikiapi = @"https://www.wikidata.org/w/api.php?action=query&format=json&list=search&utf8=1&formatversion=2&srnamespace=0&srlimit=1&srwhat=text&srinfo=totalhits&srsearch=";
 
 ////File.WriteAllLines("../../../../WordGenLib/words.txt",
