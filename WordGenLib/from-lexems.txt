@@ -2289,8 +2289,6 @@ bradded
 bradding
 brae
 braes
-brag
-bragged
 bragging
 braggings
 brags
@@ -2845,9 +2843,6 @@ cardboards
 cardholder
 cardholders
 cardiologies
-cardiologist
-cardiologists
-cardiology
 cardiomyopathies
 cardiomyopathy
 cardiopulmonary
@@ -3570,7 +3565,6 @@ coastguards
 coastwise
 coaxial
 coaxially
-cobbler
 cobblers
 cobblestone
 cobblestoned
@@ -4875,8 +4869,6 @@ decelerations
 decentralisation
 decentralisations
 decentralizing
-deceptive
-deceptively
 deceptiveness
 deciduous forest
 deciduous forests
@@ -7039,8 +7031,6 @@ extemporaneously
 extensibility
 externalization
 externalizations
-externalize
-externalized
 externalizes
 extinguishable
 extirpate
@@ -7156,7 +7146,6 @@ fairytales
 falkland islands
 fall asleep
 fallacies
-fallacious
 fallback
 fallbacks
 fallibilities
@@ -7352,7 +7341,6 @@ fibula
 fibulas
 fickleness
 fickly
-fictitious
 fictitiously
 ficus
 fiduciaries
@@ -7394,13 +7382,9 @@ fingerling
 fingerlings
 fingernail
 fingernails
-fingerprint
 fingerprinted
 fingerprinting
 fingerprintings
-fingerprints
-fingertip
-fingertips
 finis
 firehouses
 firemen
@@ -7783,7 +7767,6 @@ freshener
 fresheners
 freshening
 freshens
-freshmen
 fretted
 freudianly
 frg
@@ -8290,9 +8273,7 @@ gluons
 glutamatergic
 glutinous
 glutinously
-glutton
 gluttons
-gluttony
 glycan
 glycans
 glycemic
@@ -8327,7 +8308,6 @@ goadings
 goads
 gobble
 gobbled
-gobbler
 gobblers
 gobbles
 gobbling
@@ -8385,7 +8365,6 @@ goulash
 goulashes
 gourd
 gourds
-gourmand
 gourmandism
 gourmands
 governorship
@@ -8540,7 +8519,6 @@ grosbeak
 grosbeaks
 gross domestic product
 grouchy
-groundless
 groundlessly
 groundnut
 groundnuts
@@ -9849,7 +9827,6 @@ impoverishing
 impracticalities
 impracticality
 impractically
-imprecise
 imprecisely
 impreciseness
 imprecision
@@ -10102,7 +10079,6 @@ inertly
 inertness
 inescapable
 inescapably
-inexact
 inexactly
 inexactness
 inexcusable
@@ -10416,7 +10392,6 @@ intermountain
 internalization
 internalizations
 internalize
-internalized
 internalizes
 internationalism
 internationalisms
@@ -10429,8 +10404,6 @@ internee
 internees
 interneuron
 interneurons
-internist
-internists
 interoperabilities
 interoperability
 interoperable
@@ -10650,7 +10623,6 @@ irresistibly
 irrespective of
 irrespectively
 irresponsibilities
-irreverence
 irreverences
 irreversibilities
 irreversibility
@@ -12472,7 +12444,6 @@ misidentifications
 misidentifies
 misinform
 misinformation
-misinformed
 misinforming
 misinforms
 misinterpret
@@ -13708,9 +13679,6 @@ oncogenically
 oncologic
 oncological
 oncologically
-oncologist
-oncologists
-oncology
 oncoprotein
 oncoproteins
 oneself
@@ -13757,9 +13725,6 @@ optoelectronic
 optoelectronically
 optoelectronics
 optogenetically
-optometrist
-optometrists
-optometry
 orangeries
 orangery
 oratorially
@@ -20974,7 +20939,6 @@ unfills
 unforeseen
 unforgettable
 unforgettably
-unfounded
 unfoundedly
 unfriend
 unfriending
@@ -21092,7 +21056,6 @@ unproductively
 unprofessional
 unprotected
 unprotectedness
-unproven
 unprovoked
 unqualified
 unravel
@@ -21153,7 +21116,6 @@ unstoppable
 unstoppably
 unstressed
 unstructured
-unsubstantiated
 unsubstantiatedly
 unsuitabilities
 unsuitability
@@ -22576,7 +22538,6 @@ yoshkar ola
 youthful
 youthfully
 youthfulness
-youtuber
 youtubers
 ytterbium
 ytterbiums
