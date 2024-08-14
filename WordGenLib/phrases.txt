@@ -1602,5 +1602,3 @@ zirp
 ziti
 zitis
 zmw
-zucchini
-zucchinis
