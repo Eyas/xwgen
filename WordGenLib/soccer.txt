@@ -524,6 +524,7 @@ kyle
 kylewalker
 kylian
 kylianmbappe
+lamine
 lautaro
 law
 lawsofthegame
@@ -617,6 +618,7 @@ milan
 militao
 mista
 mitrovic
+mls
 modric
 mohamed
 mohamedsalah
@@ -638,6 +640,7 @@ net
 neuer
 newcastle
 neymar
+nico
 nicolas
 nicolo
 nicolobarella
@@ -663,8 +666,10 @@ oliver
 oliverkahn
 olivier
 oliviergiroud
+olympian
 olympic
 olympicgoal
+olympics
 omar
 omarsivori
 one
@@ -717,6 +722,7 @@ philfoden
 phoenix
 phoenixclub
 pichichi
+pickford
 piola
 pitch
 pitchinvasion
@@ -742,6 +748,7 @@ psl
 psoccer
 pssa
 pssoccer
+pulisic
 pull
 pullback
 push
@@ -922,6 +929,7 @@ ssw
 sswsl
 stanchion
 stanley
+starting xi
 step
 stepback
 stepon
@@ -1108,6 +1116,7 @@ wga
 wgsoccer
 wifl
 wifsoccer
+williams
 window
 wing
 wingback
@@ -1131,6 +1140,7 @@ wwcsl
 wwcsoocer
 xlsl
 xlsoccer
+yamal
 yashin
 yassine
 yassinebounou

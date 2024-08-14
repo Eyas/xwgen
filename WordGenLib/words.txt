@@ -16,6 +16,7 @@ a plus
 a tilt
 a to z
 a treat
+a year
 aaa
 aah
 aahs
@@ -974,6 +975,7 @@ ahmad
 ahmads
 ahmed
 ahmeds
+ai powered
 aid
 aide
 aided
@@ -1440,6 +1442,7 @@ amenities
 amenity
 america
 american
+american backed
 american samoa
 americanism
 americanisms
@@ -1792,6 +1795,7 @@ anthropology
 anthropomorphic
 anti
 anti aircraft
+anti immigrant
 antiaircraft
 antiaircrafts
 antibiotic
@@ -1806,6 +1810,7 @@ anticipation
 anticipations
 anticipative
 anticipatively
+anticolonial
 antics
 antidote
 antidotes
@@ -4255,6 +4260,7 @@ blabbermouth
 blabbermouths
 black
 black and white
+black eyed
 black friday
 black hole
 black holes
@@ -4399,6 +4405,7 @@ blitzkriegs
 blizzard
 blizzards
 bloated
+blob
 bloc
 block
 blockade
@@ -4417,6 +4424,7 @@ blockings
 blocks
 blocs
 blog
+blogging
 blogs
 blonde
 blood
@@ -4546,6 +4554,7 @@ bobbing
 bobby
 bobcat
 bobcats
+bobdylan
 bobs
 bobsleigh
 bobsleighs
@@ -4852,6 +4861,7 @@ bouts
 bouzouki
 bovines
 bow
+bowed
 bower
 bowered
 bowering
@@ -4969,7 +4979,10 @@ brasilia
 brass
 brasses
 brassier
+brat
 bratislava
+brats
+bratty
 brave
 braved
 bravely
@@ -5071,6 +5084,7 @@ breezes
 breezing
 brescia
 brest
+bret
 brethren
 breton
 brett
@@ -5972,6 +5986,7 @@ cantered
 cantering
 canters
 canticles
+cantine
 canting
 canto
 canton
@@ -6074,6 +6089,7 @@ capture
 captured
 captures
 capturing
+capuccino
 capuchin
 car
 carabinieri
@@ -6082,6 +6098,7 @@ caramel
 caramels
 caravan
 caravans
+carb
 carbide
 carbides
 carbohydrate
@@ -6095,6 +6112,7 @@ carbonated
 carbonates
 carbonic
 carbons
+carbs
 carcass
 carcasses
 carcinogen
@@ -6451,6 +6469,7 @@ cdmx
 cds
 cease
 ceased
+ceasefire
 ceaseless
 ceases
 ceasing
@@ -6631,6 +6650,7 @@ chairperson
 chairpersons
 chairs
 chairwoman
+chaise
 chaises
 chalice
 chalices
@@ -6972,6 +6992,7 @@ childs
 chile
 chilean
 chileans
+chiles
 chili
 chilies
 chilis
@@ -7176,6 +7197,7 @@ cicero
 cicerone
 cicerones
 cid
+cider
 cigar
 cigarette
 cigarettes
@@ -7611,6 +7633,7 @@ co occurrence
 co occurrences
 co operatively
 co ordinately
+co owner
 co writing
 co written
 coach
@@ -7764,6 +7787,7 @@ coking
 col
 cola
 colas
+colbert
 cold
 cold call
 cold feet
@@ -8118,6 +8142,7 @@ commuter
 commuters
 commutes
 commuting
+como
 comoros
 comp
 compact
@@ -8270,6 +8295,7 @@ compositional
 compositionally
 compositions
 compositor
+compost
 compound
 compounded
 compounder
@@ -8795,6 +8821,7 @@ constellation
 constellations
 consternation
 consternations
+constipated
 constipation
 constipations
 constituencies
@@ -9102,6 +9129,7 @@ cooled
 cooler
 coolers
 cooley
+coolheaded
 coolidge
 cooling
 coolly
@@ -9424,6 +9452,7 @@ counterspace
 countertenor
 countertenors
 counterterrorism
+countertop
 counterweight
 counterweighting
 counterweights
@@ -9848,6 +9877,7 @@ crossness
 crossover
 crossovers
 crossroads
+crossword
 crotched
 crotches
 crouch
@@ -9954,6 +9984,7 @@ cuckooed
 cuckooing
 cuckoos
 cucumber
+cucumbers
 cuddle
 cuddled
 cuddles
@@ -10101,6 +10132,7 @@ custom made
 customarily
 customary
 customer
+customer facing
 customers
 customize
 customized
@@ -10110,6 +10142,7 @@ customs
 cut
 cut off
 cut offs
+cut paper
 cutaway
 cutaways
 cutback
@@ -10280,6 +10313,7 @@ daringly
 darius
 darjeeling
 dark
+dark brown
 dark horse
 dark matter
 darkblue
@@ -10358,6 +10392,7 @@ day for night
 day one
 day or night
 day to day
+daybed
 daybreak
 daylight
 daylights
@@ -10559,6 +10594,8 @@ declined
 declines
 declining
 deco
+decoding
+decolonize
 decommissioned
 decommissioning
 decomposable
@@ -10647,6 +10684,7 @@ deepened
 deepening
 deepens
 deeper
+deepfake
 deeply
 deepness
 deeps
@@ -11372,6 +11410,7 @@ devise
 devised
 devises
 devising
+devito
 devoid
 devon
 devonian
@@ -11944,6 +11983,7 @@ dishonorably
 dishonored
 dishonoring
 dishonors
+dishwasher
 disillusioned
 disinformation
 disinherit
@@ -12723,8 +12763,10 @@ dripping
 drippings
 drips
 drive
+drive throughs
 driven
 driver
+driverless
 drivers
 drives
 driveway
@@ -12785,6 +12827,7 @@ drunks
 druze
 dry
 dry foot
+dryer
 dryerase
 drying
 dryly
@@ -13495,6 +13538,7 @@ embraced
 embraces
 embracing
 embryonic
+embryos
 emerald
 emeralds
 emerge
@@ -14355,6 +14399,7 @@ evaluative
 evaluatively
 evaluator
 evaluators
+evan
 evangelical
 evangelicalism
 evangelicalisms
@@ -15096,6 +15141,7 @@ familiar
 familiars
 families
 family
+family friendly
 famine
 famines
 famous
@@ -15141,6 +15187,7 @@ far from
 far from it
 far off
 far out
+farah
 faraway
 farce
 farced
@@ -15482,6 +15529,7 @@ fibbers
 fiber
 fibers
 fibrosis
+fibrous
 fiction
 fictional
 fictionalize
@@ -15623,6 +15671,7 @@ financed
 finances
 financial
 financially
+financials
 financier
 financiered
 financiering
@@ -15693,6 +15742,7 @@ firefly
 firefox
 firehouse
 fireman
+firenze
 fireplace
 fireplaces
 firepower
@@ -15825,6 +15875,7 @@ flames
 flamethrower
 flamethrowers
 flaming
+flamingos
 flamings
 flank
 flanked
@@ -15855,6 +15906,7 @@ flashlights
 flat
 flat footed
 flat out
+flat white
 flatbread
 flating
 flatness
@@ -15995,12 +16047,14 @@ florally
 floras
 florence
 florences
+florentine
 florida
 floridas
 florin
 florins
 florist
 florists
+floss
 flotation
 flotations
 flotilla
@@ -17212,6 +17266,7 @@ genitives
 genius
 geniuses
 genoa
+genocidal
 genocidally
 genocide
 genocides
@@ -17476,6 +17531,7 @@ glistens
 glitched
 glitches
 glitching
+glitchy
 glitter
 glittered
 glittering
@@ -17662,6 +17718,7 @@ gosling
 gospel
 gospels
 gospely
+goss
 gossamer
 gossamers
 gossip
@@ -18334,6 +18391,7 @@ halcyons
 hale
 haled
 hales
+haley
 half
 half and half
 half brother
@@ -18381,6 +18439,7 @@ halts
 halves
 ham
 hamal
+hamas
 hamburg
 hamburger
 hamburgers
@@ -18469,6 +18528,7 @@ hangman
 hangout
 hangouts
 hangs
+haniyeh
 hank
 hanks
 hanna
@@ -18587,6 +18647,7 @@ harpsichords
 harried
 harries
 harris
+harris walz
 harrison
 harrisons
 harrow
@@ -18765,6 +18826,7 @@ headset
 headsets
 headwater
 headwaters
+headway
 heal
 healed
 healer
@@ -18938,6 +19000,7 @@ helsinki
 hem
 hemes
 hemic
+hemingway
 hemisphere
 hemispheres
 hemispheric
@@ -19169,6 +19232,7 @@ hinted
 hinting
 hints
 hip
+hip hop
 hipped
 hipper
 hippie
@@ -19176,6 +19240,7 @@ hippies
 hippo
 hippodrome
 hippodromes
+hippopotamus
 hippopotamuses
 hippos
 hips
@@ -19394,6 +19459,7 @@ hong
 hong kong
 hongs
 honing
+honks
 honolulu
 honor
 honorable
@@ -19931,6 +19997,7 @@ iii
 ijk
 ike
 ikea
+ilhan
 ilia
 ill
 ill natured
@@ -19996,6 +20063,7 @@ imagining
 imam
 imams
 iman
+imani
 imbalance
 imbalanced
 imbalances
@@ -20114,6 +20182,8 @@ imperfects
 imperial
 imperialism
 imperialisms
+imperialist
+imperialists
 imperially
 imperials
 imperil
@@ -20160,6 +20230,9 @@ implicitly
 implicitness
 implied
 implies
+implode
+imploded
+imploding
 implore
 implored
 implores
@@ -20329,6 +20402,7 @@ inaugurates
 inaugurating
 inauguration
 inaugurations
+inauthentic
 inboard
 inc
 inca
@@ -20465,6 +20539,7 @@ incurably
 incurred
 incurring
 incurs
+incursion
 ind
 indebted
 indebtedness
@@ -21635,6 +21710,7 @@ isle of man
 isles
 islet
 islets
+isnt
 iso
 isolate
 isolated
@@ -21759,6 +21835,7 @@ jamaicans
 jamaicas
 jamboree
 jamborees
+jamelle
 james
 james garfield
 jameson
@@ -21813,6 +21890,7 @@ jazz
 jazzed
 jazzes
 jazzing
+jd vance
 jealous
 jealousies
 jealously
@@ -21831,6 +21909,7 @@ jeffersons
 jeffrey
 jeffs
 jellyfish
+jenga
 jenkins
 jennie
 jennies
@@ -21964,6 +22043,7 @@ jollier
 jollies
 jollily
 jolliness
+jollof
 jolly
 jollying
 jon
@@ -22221,6 +22301,7 @@ kathleen
 kathy
 katrina
 katrine
+katy
 kay
 kayak
 kayaked
@@ -22673,6 +22754,7 @@ landers
 landing
 landings
 landlady
+landlocked
 landlord
 landlords
 landmark
@@ -22812,6 +22894,7 @@ launches
 launching
 launchpad
 launchpads
+launder
 laundries
 laundromat
 laundry
@@ -22891,6 +22974,7 @@ leaf
 leafing
 leaflet
 leaflets
+leafy
 league
 leagued
 leaguer
@@ -22953,6 +23037,7 @@ lebanon
 lech
 leches
 lechon
+lectern
 lecture
 lectured
 lecturer
@@ -23972,6 +24057,7 @@ macer
 maces
 macfarlane
 mach
+machina
 machine
 machine intelligence
 machine learning
@@ -24090,6 +24176,7 @@ maiden name
 maidens
 maids
 mail
+mail order
 mailed
 mailer
 mailers
@@ -24432,6 +24519,7 @@ marions
 marios
 mariposa
 maris
+marisa
 maritime
 maritimely
 mark
@@ -24580,6 +24668,7 @@ massacre
 massacred
 massacres
 massacring
+massages
 massaman
 massed
 masses
@@ -24749,6 +24838,7 @@ mazes
 mazurka
 mazurkas
 mbs
+mccarthy
 mccarthys
 mcdonald
 mcdonalds
@@ -25064,6 +25154,7 @@ messenger
 messengers
 messes
 messing
+messy
 met
 meta
 metabolic
@@ -25113,6 +25204,7 @@ meter
 metered
 metering
 meters
+meth
 methadone
 methadones
 methamphetamine
@@ -25186,6 +25278,7 @@ microcomputers
 microelectronics
 micrograph
 micrographs
+micron
 micronesia
 microns
 microphone
@@ -25434,6 +25527,7 @@ miraculous
 miraculously
 mirage
 mirages
+miralax
 mire
 mired
 mires
@@ -25535,6 +25629,7 @@ misspellings
 misspells
 misstep
 missteps
+missy
 mist
 mistakable
 mistakably
@@ -26066,6 +26161,7 @@ mrs
 msft
 msn
 msnbc
+mtv
 much
 much what
 muchly
@@ -26089,6 +26185,7 @@ muffins
 muggers
 mugging
 muggings
+mugs
 muhammad
 muhammads
 muir
@@ -26162,6 +26259,7 @@ munched
 munches
 munching
 mundane
+mundy
 munging
 munich
 municipal
@@ -26181,6 +26279,7 @@ murderer
 murderers
 murdering
 murders
+murdoch
 murillo
 murmured
 murmurer
@@ -26236,6 +26335,7 @@ musses
 mussing
 must
 must not
+must see
 mustache
 mustached
 mustaches
@@ -26321,6 +26421,7 @@ nachos
 nada
 nadir
 nadirs
+naftali
 nag
 nagasaki
 nagged
@@ -26358,6 +26459,9 @@ nana
 nancy
 nancys
 nanny
+nano
+nanometer
+nanosecond
 nans
 nantes
 nao
@@ -26411,6 +26515,7 @@ nastiness
 nasty
 natal
 natalie
+nate
 nathan
 nathans
 nation
@@ -26506,6 +26611,7 @@ neat
 neater
 neatly
 neatness
+nebbe
 nebraska
 nebraskas
 nebuchadnezzar
@@ -26631,6 +26737,7 @@ nests
 net
 net zero
 netanyahu
+netflix
 netherlands
 nets
 nettled
@@ -26851,6 +26958,7 @@ no shows
 no sweat
 no way jose
 no while
+noaa
 nobel
 nobels
 nobilities
@@ -27119,6 +27227,7 @@ now and then
 now or never
 nowhere
 nowheres
+nowicki
 nows
 noxious
 nsfw
@@ -27211,6 +27320,7 @@ obedience
 obedient
 obelisk
 obelisks
+obesity
 obey
 obeyed
 obeying
@@ -27458,7 +27568,6 @@ oklahoma
 ola
 olaf
 old
-old
 old fashioned
 older
 oldest
@@ -27514,6 +27623,7 @@ on ramp
 on read
 on spec
 on stage
+on tap
 on target
 on the
 on the air
@@ -27790,6 +27900,8 @@ organizers
 organizes
 organizing
 organs
+orhan
+orhanpamuk
 orient
 oriental
 orientalist
@@ -27866,6 +27978,7 @@ oscillator
 oscillators
 oskar
 oslo
+osment
 osprey
 ospreys
 ostensibly
@@ -28370,6 +28483,7 @@ pampering
 pampers
 pamphlet
 pamphlets
+pamuk
 pan
 panacea
 panaceas
@@ -28805,6 +28919,7 @@ patterned
 patterning
 patterns
 patters
+patti
 patties
 patting
 patty
@@ -28871,6 +28986,7 @@ pealings
 peanut
 peanuts
 pear
+pear and tonka
 pearl
 pearled
 pearling
@@ -28942,6 +29058,7 @@ peers
 peg
 pegged
 pegging
+peggy
 peking duck
 pelagic
 pele
@@ -29273,6 +29390,7 @@ pestering
 pesters
 pestled
 pestles
+pesto
 pests
 pet
 petal
@@ -29649,6 +29767,7 @@ piratical
 piratically
 pirating
 pisces
+piscione
 pisco
 pistachio
 pistachios
@@ -30013,6 +30132,7 @@ policies
 policing
 policy
 policymaker
+policymakers
 poling
 polish
 polished
@@ -30036,6 +30156,7 @@ politicizes
 politico
 politicos
 politics
+politics free
 polities
 polity
 polk
@@ -30279,6 +30400,7 @@ possible
 possibly
 post
 post carbon
+post grad
 post war
 post wars
 postage
@@ -30344,6 +30466,7 @@ potentially
 potentials
 potently
 potholes
+potion
 potions
 pots
 potter
@@ -31582,6 +31705,7 @@ pussycat
 pussycats
 put
 putative
+putin
 puts
 putt
 putted
@@ -31969,6 +32093,7 @@ ralphs
 ram
 rama
 ramadan
+ramble
 rambling
 rami
 rammed
@@ -32608,6 +32733,7 @@ redhead
 redheaded
 redheads
 redial
+redid
 redirect
 redirected
 redirecting
@@ -32624,7 +32750,9 @@ redistribution
 redistributions
 redly
 redness
+redo
 redoing
+redone
 reds
 reduce
 reduced
@@ -32844,6 +32972,7 @@ regrets
 regrettable
 regretted
 regretting
+regrow
 regular
 regularity
 regularize
@@ -32892,6 +33021,9 @@ reign
 reigned
 reigning
 reigns
+reimagine
+reimagined
+reimagining
 rein
 reincarnate
 reincarnated
@@ -33453,6 +33585,7 @@ resettlement
 resettlements
 resettles
 resettling
+reshaping
 reside
 resided
 residence
@@ -33699,6 +33832,7 @@ reunites
 reuniting
 reusability
 reusable
+reuters
 rev
 revamp
 revamped
@@ -34099,6 +34233,7 @@ robins
 robinson
 robinsons
 robot
+robotaxi
 robotic
 robotically
 robotics
@@ -34213,6 +34348,7 @@ rooming
 roommate
 roommates
 rooms
+roomy
 roosevelt
 roost
 roosted
@@ -34616,6 +34752,7 @@ salaam
 salaamed
 salaaming
 salaams
+salaberry
 salad
 salads
 salaried
@@ -34916,6 +35053,7 @@ scalpel
 scalpels
 scalpers
 scalping
+scammer
 scamped
 scamping
 scan
@@ -35742,6 +35880,7 @@ seville
 sewage
 sewages
 sewer
+sewer gas
 sewerage
 sewerages
 sewers
@@ -35779,6 +35918,7 @@ shakedown
 shakedowns
 shakes
 shakespeare
+shakespearean
 shakespeares
 shakier
 shakily
@@ -35800,6 +35940,7 @@ shamanisms
 shamans
 shame
 shamed
+shameful
 shames
 shaming
 shammed
@@ -36347,6 +36488,7 @@ silverwares
 silvery
 sim
 sima
+simbarashe
 simians
 similar
 similarities
@@ -36528,6 +36670,7 @@ sketches
 sketching
 skew
 skewed
+skewer
 skewered
 skewering
 skewers
@@ -36688,6 +36831,7 @@ sleepwalks
 sleepy
 sleeve
 sleeved
+sleeveless
 sleeves
 sleighed
 sleighing
@@ -37341,6 +37485,7 @@ sovereigns
 sovereignties
 sovereignty
 soviet
+soviet era
 soviet union
 soviets
 sow
@@ -37670,7 +37815,6 @@ spoke
 spoken
 spokes
 spokesman
-spokesman
 spokesperson
 spokespersons
 spokeswoman
@@ -37847,6 +37991,7 @@ squirrels
 squirted
 squirting
 squirts
+srettha
 sri
 sri lanka
 sri lankan
@@ -38019,6 +38164,8 @@ starter
 starters
 starting
 startings
+startle
+startled
 startling
 starts
 startup
@@ -38158,6 +38305,7 @@ stein
 steins
 stella
 stellar
+stellato
 stem
 stemmed
 stemming
@@ -38236,6 +38384,7 @@ stewing
 stews
 stick
 sticker
+stickers
 stickfigure
 stickier
 sticking
@@ -38907,6 +39056,7 @@ suctioning
 suctions
 sud
 sudan
+sudanese
 sudden
 suddenly
 suddenness
@@ -39546,6 +39696,7 @@ tableaus
 tableaux
 tabled
 tables
+tablespoon
 tablet
 tabletop
 tabletops
@@ -39587,6 +39738,7 @@ tacky
 taco
 tacoma
 tacos
+tactic
 tactical
 tactically
 tactics
@@ -39688,6 +39840,7 @@ tamers
 tames
 tamil
 taming
+tammy
 tampa
 tampas
 tamper
@@ -39741,6 +39894,7 @@ tapered
 tapering
 tapers
 tapes
+tapestries
 tapestry
 taping
 tapings
@@ -39868,6 +40022,7 @@ teals
 team
 teamed
 teaming
+teammates
 teams
 teamwork
 teapots
@@ -39914,6 +40069,7 @@ teenaged
 teenager
 teenagers
 teens
+teeny
 teetered
 teetering
 teeters
@@ -40117,6 +40273,7 @@ terrestrial
 terrestrially
 terrible
 terribleness
+terribly
 terries
 terrific
 terrified
@@ -40229,6 +40386,7 @@ the flu
 the game is on
 the hell
 the hell out of
+the letter
 the netherlands
 the new yorker
 the older
@@ -40252,6 +40410,7 @@ thee
 theft
 thefts
 their
+theirs
 them
 thematic
 thematically
@@ -41321,6 +41480,7 @@ trembling
 tremendous
 tremendously
 tremendousness
+tremezzina
 tremored
 tremoring
 tremors
@@ -41478,6 +41638,7 @@ trouncing
 trouncings
 troupe
 troupes
+trousers
 trout
 trouts
 trove
@@ -41597,6 +41758,7 @@ tumors
 tums
 tumults
 tun
+tuna
 tunable
 tundra
 tundras
@@ -41764,6 +41926,7 @@ types
 typesetting
 typewriter
 typewriters
+typewritten
 typhoid
 typhoids
 typhoon
@@ -41841,12 +42004,14 @@ unavoidably
 unaware
 unawareness
 unbecoming
+unblock
 uncensored
 uncertain
 uncertainly
 uncertainties
 uncertainty
 unchanged
+uncharted
 uncle
 unclearly
 uncles
@@ -41946,6 +42111,7 @@ unfold
 unfolded
 unfolding
 unfolds
+unfollow
 unfortunate
 unfortunately
 unfortunates
@@ -42015,6 +42181,8 @@ universe
 universes
 universities
 university
+unjust
+unjustly
 unknown
 unknownly
 unknowns
@@ -42053,6 +42221,8 @@ unopposed
 unpaid
 unpopular
 unpopularity
+unpower
+unpowered
 unprecedented
 unprecedentedly
 unpublished
@@ -42114,6 +42284,7 @@ update
 updated
 updates
 updating
+upend
 upenn
 upgrade
 upgraded
@@ -42150,6 +42321,7 @@ upset
 upsets
 upsettably
 upsetting
+upshot
 upside
 upside down
 upsidedown
@@ -42298,8 +42470,10 @@ vampires
 vampirically
 van
 van buren
+vance
 vancouver
 vancouvers
+vanessa
 vanguard
 vanguards
 vanish
@@ -42341,6 +42515,7 @@ vatican
 vatican city
 vaudeville
 vaudevilles
+vaughn
 vault
 vaulter
 vaulters
@@ -42371,6 +42546,7 @@ velocities
 velocity
 velvet
 velvets
+vending
 vendor
 vendors
 venerate
@@ -42489,6 +42665,7 @@ vibration
 vibrational
 vibrationally
 vibrations
+vibrator
 vicar
 vicars
 vice
@@ -42530,6 +42707,7 @@ viewably
 viewed
 viewer
 viewers
+viewership
 viewing
 viewings
 viewpoint
@@ -42548,10 +42726,14 @@ villains
 villas
 ville
 villes
+vince
 vincent
 vincents
+vindicate
+vindictive
 vine
 vined
+vinegar
 vines
 vineyard
 vineyards
@@ -42639,6 +42821,9 @@ vivas
 vividly
 vividness
 vladimir
+vlog
+vlogging
+vlogs
 vocabularies
 vocabulary
 vocal
@@ -42691,6 +42876,7 @@ volunteered
 volunteering
 volunteers
 vomiting
+vondruska
 vote
 voted
 voter
@@ -42769,6 +42955,7 @@ wally
 walmart
 walnut
 walnuts
+walrus
 walsh
 walt
 walt disney
@@ -42779,7 +42966,9 @@ waltz
 waltzed
 waltzes
 waltzing
+walz
 wan
+wand
 wander
 wandered
 wanderer
@@ -42787,6 +42976,7 @@ wanderers
 wandering
 wanderingly
 wanders
+wands
 wane
 waned
 wanes
@@ -42857,6 +43047,7 @@ was
 was not
 wash
 washed
+washer
 washes
 washing
 washings
@@ -42900,6 +43091,7 @@ waved
 wavered
 waves
 waving
+wavy
 wax
 waxed
 waxes
@@ -42909,6 +43101,7 @@ way
 way back
 way out
 way too
+waymo
 wayne
 waynes
 ways
@@ -42944,6 +43137,7 @@ wearers
 wearing
 wearingly
 wears
+weary
 weasel
 weasels
 weather
@@ -42989,6 +43183,7 @@ weekends
 weeklies
 weekly
 weeks
+wegovy
 weigh
 weighed
 weighing
@@ -43002,6 +43197,7 @@ weights
 weir
 weird
 weirder
+weirdest
 weirdly
 weirdness
 weirs
@@ -43326,6 +43522,7 @@ wishes
 wishing
 wit
 witch
+witchcraft
 witched
 witches
 with
@@ -43371,6 +43568,7 @@ wonderland
 wonderlands
 wonderly
 wonders
+wonka
 wont
 woo
 wood
@@ -43397,6 +43595,7 @@ word for word
 worded
 wording
 wordle
+wordplay
 words
 wore
 work
@@ -43423,6 +43622,7 @@ world leading
 world music
 world wide
 worlds
+worldwide
 worm
 wormed
 worming
@@ -43648,10 +43848,12 @@ youtube
 youve
 yrs
 yuan
+yucking
 yugoslav
 yugoslavia
 yugoslavs
 yukon
+yum
 ywca
 zachary taylor
 zagreb

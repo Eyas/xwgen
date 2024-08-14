@@ -2302,8 +2302,6 @@ brandies
 brasserie
 brasseries
 brassily
-brat
-brats
 bratwurst
 bratwursts
 bravura
@@ -2813,7 +2811,6 @@ carapace
 carapaces
 caraway
 caraways
-carb
 carbine
 carbines
 carbon credit
@@ -2837,7 +2834,6 @@ carbonizes
 carbonizing
 carbonyl
 carbonyls
-carbs
 carcase
 carcases
 carcinogenesis
@@ -3016,7 +3012,6 @@ cavitations
 cayenne
 cayennes
 cayuses
-ceasefire
 ceasefires
 celadon
 celebrant
@@ -3809,7 +3804,6 @@ complicating
 complicities
 complimentally
 complimentarily
-compost
 composted
 composting
 composts
@@ -4511,7 +4505,6 @@ crossway
 crossways
 crosswind
 crosswinds
-crossword
 crosswords
 crousely
 crowdfunding
@@ -4588,7 +4581,6 @@ cubit
 cubits
 cuboid
 cuboids
-cucumbers
 cuddly
 cuirass
 culmination
@@ -4912,11 +4904,9 @@ decoded
 decoder
 decoders
 decodes
-decoding
 decodings
 decolonization
 decolonizations
-decolonize
 decolonized
 decolonizes
 decolonizing
@@ -5969,7 +5959,6 @@ drupe
 drupes
 dryad
 dryads
-dryer
 dryers
 dryland
 drylands
@@ -6382,7 +6371,6 @@ embryologist
 embryologists
 embryology
 embryonically
-embryos
 embu das artes
 emend
 emendation
@@ -7359,7 +7347,6 @@ fibroblast
 fibroblasts
 fibroid
 fibroids
-fibrous
 fibrously
 fibula
 fibulas
@@ -7463,7 +7450,6 @@ flamboyantly
 flamboyants
 flamingly
 flamingo
-flamingos
 flammabilities
 flammability
 flammable
@@ -7536,7 +7522,6 @@ floriculture
 floricultures
 floridly
 floristically
-floss
 flossed
 flosses
 flossie
@@ -8891,7 +8876,6 @@ headscarf
 headspace
 headstone
 headstones
-headway
 headways
 headwind
 headwinds
@@ -9274,7 +9258,6 @@ honked
 honker
 honkers
 honking
-honks
 honorarium
 honorariums
 honoree
@@ -9828,8 +9811,6 @@ imperceptibilities
 imperceptibility
 imperceptible
 imperceptibly
-imperialist
-imperialists
 imperious
 impermeabilities
 impermeability
@@ -9846,10 +9827,7 @@ impious
 implausibilities
 implausibility
 implied consent
-implode
-imploded
 implodes
-imploding
 implosively
 imposition
 impositions
@@ -10023,7 +10001,6 @@ incubations
 incubator
 incubators
 incunabula
-incursion
 incursions
 incursively
 indebtedly
@@ -11088,7 +11065,6 @@ landfall
 landfalls
 landfill
 landfills
-landlocked
 landmasses
 landmine
 landmines
@@ -11154,7 +11130,6 @@ latitudinal
 latitudinally
 latrine
 latrines
-launder
 laundered
 laundering
 launderings
@@ -11188,7 +11163,6 @@ lcks
 leaderlessly
 leafier
 leafily
-leafy
 leakage
 leakages
 leakier
@@ -11944,7 +11918,6 @@ masqueraders
 mass mortality event
 massage
 massaged
-massages
 massaging
 masseuse
 masseuses
@@ -12192,7 +12165,6 @@ messier
 messily
 messina
 messiness
-messy
 mestizo
 mestizos
 mesto
@@ -12863,7 +12835,6 @@ mufti
 muftis
 mug
 mugged
-mugs
 mulberries
 mulierly
 multan
@@ -13037,7 +13008,6 @@ namelessly
 namespace
 namespaces
 nannies
-nano
 nanocrystal
 nanocrystals
 nanofiber
@@ -13046,7 +13016,6 @@ nanomaterial
 nanomaterials
 nanomedicine
 nanomedicines
-nanometer
 nanometers
 nanometre
 nanometres
@@ -13057,7 +13026,6 @@ nanophotonics
 nanoscale
 nanoscience
 nanosciences
-nanosecond
 nanoseconds
 nanostructure
 nanostructured
@@ -13562,7 +13530,6 @@ oberhausen
 obese
 obesely
 obesities
-obesity
 obfuscate
 obfuscated
 obfuscates
@@ -14723,7 +14690,6 @@ pesticides
 pestilence
 pestilences
 pestling
-pesto
 pestos
 petah tikva
 petiole
@@ -15242,7 +15208,6 @@ polecats
 poleward
 polewards
 policemen
-policymakers
 policymaking
 poliomyelitis
 politer
@@ -16284,7 +16249,6 @@ rainwaters
 rajkot
 ramadi
 ramat gan
-ramble
 rambled
 rambler
 ramblers
@@ -16704,10 +16668,7 @@ regularizing
 rehydration
 rehydrations
 reichsmark
-reimagine
-reimagined
 reimagines
-reimagining
 reimburse
 reimbursed
 reimbursement
@@ -16892,7 +16853,6 @@ resets
 reshape
 reshaped
 reshapes
-reshaping
 reshuffle
 reshuffled
 reshuffles
@@ -18918,8 +18878,6 @@ staringly
 starling
 starlings
 starrily
-startle
-startled
 startles
 startling
 stash
@@ -18999,7 +18957,6 @@ stetted
 stetting
 stewardship
 stewardships
-stickers
 stickily
 stickiness
 stickleback
@@ -19318,7 +19275,6 @@ suckle
 suckled
 suckles
 sucklings
-sudanese
 suds
 suf
 sufficiencies
@@ -19691,7 +19647,6 @@ tabular
 tabularly
 tacit
 taciturn
-tactic
 tactile
 tactilely
 tactilities
@@ -19748,7 +19703,6 @@ tantalums
 tantra
 tantras
 tantrically
-tapestries
 tapeworm
 tapeworms
 taphonomically
@@ -19823,7 +19777,6 @@ tectonics
 tectonophysically
 teddy bear
 teddy bears
-teeny
 teethe
 teethed
 teether
@@ -19959,7 +19912,6 @@ thankful
 thankfully
 thankfulness
 the heck
-theirs
 theogony
 theoretically
 theoretician
@@ -20587,7 +20539,6 @@ trotters
 troubleshooting
 troublesome
 troublesomely
-trousers
 truancy
 truant
 truantly
@@ -20643,7 +20594,6 @@ tumorigenically
 tumorigenicity
 tumuli
 tumulus
-tuna
 tunas
 tunnies
 tunny
@@ -20822,7 +20772,6 @@ unbiasedly
 unbind
 unbinding
 unbinds
-unblock
 unblocking
 unblocks
 unborn
@@ -20839,7 +20788,6 @@ uncapped
 uncapping
 unchained
 uncharged
-uncharted
 uncial
 uncially
 uncials
@@ -21088,9 +21036,7 @@ unisonally
 unisons
 univariately
 unix
-unjust
 unjustified
-unjustly
 unjustness
 unlabeled
 unlearn
@@ -21270,7 +21216,6 @@ upbeatly
 upbeats
 upbringing
 upbringings
-upend
 upended
 upending
 upendings
@@ -21291,7 +21236,6 @@ uprooted
 uprooting
 uproots
 upscale
-upshot
 upshots
 upsilon
 upsilons
@@ -21522,7 +21466,6 @@ vended
 vendetta
 vendettas
 vendible
-vending
 vendings
 vends
 veneer
@@ -21635,7 +21578,6 @@ vibrated
 vibrates
 vibrating
 vibrato
-vibrator
 vibrators
 vibratory
 vibratos
@@ -21682,7 +21624,6 @@ villeurbanne
 villus
 vim
 vims
-vindicate
 vindicated
 vindicates
 vindicating
@@ -21690,7 +21631,6 @@ vindication
 vindications
 vindicator
 vindicators
-vinegar
 vinegars
 vino
 vinos
@@ -21934,12 +21874,9 @@ wallpaper
 wallpapered
 wallpapering
 wallpapers
-walrus
 walruses
 walshes
-wand
 wanderings
-wands
 wangle
 wangled
 wangles
@@ -21978,7 +21915,6 @@ warts
 warts and all
 warty
 wary
-washer
 washers
 washout
 washouts
@@ -22062,7 +21998,6 @@ wavers
 wavier
 wavily
 waviness
-wavy
 waxily
 waxy
 wayside
@@ -22081,7 +22016,6 @@ wearier
 wearies
 wearily
 weariness
-weary
 wearying
 weatherman
 weathers
@@ -22384,7 +22318,6 @@ wisterias
 wistly
 witch hunt
 witch hunts
-witchcraft
 with a grain of salt
 wither
 withered

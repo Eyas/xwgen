@@ -408,6 +408,7 @@ bogicevic
 boksic
 boli
 bolivia
+bolt
 bomb
 bombers
 bommel
@@ -1954,6 +1955,7 @@ joseaguas
 josef
 joseph
 josephujlaki
+joshkerr
 josip
 jourdren
 journeyman
@@ -2032,6 +2034,7 @@ kennedy
 kennet
 kenny
 kerkhof
+kerr
 kevin
 kevindavies
 kevinkeegan
@@ -2689,6 +2692,8 @@ oleh
 oleksandr
 oleksiy
 olemadsen
+oleole
+oleoleole
 olic
 oline
 olisadebe
@@ -2697,6 +2702,7 @@ oliver
 oliverkahn
 olivier
 olsen
+olympian
 olympic
 olympics
 omar
@@ -2869,6 +2875,7 @@ pga
 pgatour
 phantom
 phantomtag
+phelps
 philipp
 philippe
 phillips
@@ -2952,6 +2959,8 @@ pole
 pollak
 polo
 polster
+pommel
+pommelhorse
 ponedelnik
 pong
 pooch
@@ -3477,6 +3486,7 @@ silviu
 silviulung
 simon
 simondavies
+simone
 simonsen
 simonsson
 sinclair
@@ -3983,6 +3993,8 @@ upstairs
 urbanczyk
 uruguay
 usa
+usain
+usainbolt
 usga
 usmnt
 usopen
@@ -4233,5 +4245,3 @@ zone
 zoneread
 zvezdan
 zvonimir
-oleole
-oleoleole
