@@ -50,7 +50,7 @@ namespace WordGenLib
 
         public bool IsFull => _ct == _available.Length;
     }
-    public class GridDictionary<T>(int size) where T : notnull, new()
+    public class Grid2D<T>(int size) where T : notnull, new()
     {
         private readonly T?[,] _values = new T?[size, size];
 
@@ -279,6 +279,7 @@ namespace WordGenLib
             IPossibleLines Filter(char constraint, int index);
             IPossibleLines RemoveWordOption(string word);
             IEnumerable<ConcreteLine> Iterate();
+            ConcreteLine? FirstOrNull();
             ChoiceStep MakeChoice();
 
             public static IPossibleLines RemoveWordOptions(IEnumerable<string> line, IPossibleLines l)
@@ -300,6 +301,7 @@ namespace WordGenLib
             public IPossibleLines Filter(char _, int _2) => this;
             public IPossibleLines RemoveWordOption(string word) => this;
             public IEnumerable<ConcreteLine> Iterate() => [];
+            public ConcreteLine? FirstOrNull() => null;
             public ChoiceStep MakeChoice() => throw new InvalidOperationException("Cannot call MakeChoice on Impossible");
 
             private static readonly Impossible?[] _cache = new Impossible?[25];
@@ -402,6 +404,12 @@ namespace WordGenLib
             public IEnumerable<ConcreteLine> Iterate() =>
                 Preferred.Concat(Obscure)
                 .Select(w => new ConcreteLine(w, [w]));
+            public ConcreteLine? FirstOrNull()
+            {
+                if (Preferred.Count > 0) return new ConcreteLine(Preferred[0], [Preferred[0]]);
+                if (Obscure.Count > 0) return new ConcreteLine(Obscure[0], [Obscure[0]]);
+                return null;
+            }
         }
         record BlockBefore(IPossibleLines Lines) : IPossibleLines
         {
@@ -448,6 +456,10 @@ namespace WordGenLib
                 return this with { Lines = lines };
             }
             public IEnumerable<ConcreteLine> Iterate() => Lines.Iterate().Select(line => line with { Line = Constants.BLOCKED + line.Line });
+            public ConcreteLine? FirstOrNull() => Lines.FirstOrNull() switch {
+                null => null,
+                ConcreteLine line => line with {  Line = Constants.BLOCKED + line.Line },
+            };
             public ChoiceStep MakeChoice()
             {
                 ChoiceStep inner = Lines.MakeChoice();
@@ -503,6 +515,11 @@ namespace WordGenLib
                 return this with { Lines = lines };
             }
             public IEnumerable<ConcreteLine> Iterate() => Lines.Iterate().Select(line => line with { Line = line.Line + Constants.BLOCKED });
+            public ConcreteLine? FirstOrNull() => Lines.FirstOrNull() switch
+            {
+                null => null,
+                ConcreteLine line => line with { Line = line.Line + Constants.BLOCKED },
+            };
             public ChoiceStep MakeChoice()
             {
                 ChoiceStep inner = Lines.MakeChoice();
@@ -587,6 +604,7 @@ namespace WordGenLib
                         Words: first.Words.AddRange(second.Words))
                     )
                 );
+            public ConcreteLine? FirstOrNull() => Iterate().Take(1).Select(l => (ConcreteLine?)l).FirstOrDefault();
             public ChoiceStep MakeChoice()
             {
                 if (First.MaxPossibilities > 1)
@@ -674,6 +692,7 @@ namespace WordGenLib
                 return new Compound(filtered);
             }
             public IEnumerable<ConcreteLine> Iterate() => Possibilities.SelectMany(possible => possible.Iterate());
+            public ConcreteLine? FirstOrNull() => Possibilities.Select(possible => possible.FirstOrNull()).Where(p => p != null).FirstOrDefault();
             public ChoiceStep MakeChoice()
             {
                 if (Possibilities.Length <= 1) throw new InvalidOperationException("Cannot make a choice if Possibilities <= 1");
@@ -722,6 +741,7 @@ namespace WordGenLib
             {
                 yield return Line;
             }
+            public ConcreteLine? FirstOrNull() => Line;
             public ChoiceStep MakeChoice() => throw new InvalidOperationException("Cannot make a choice on a definite line");
         }
 
@@ -778,7 +798,7 @@ namespace WordGenLib
         }
         private IPossibleLines AllPossibleLines(int maxLength, Dictionary<int, IPossibleLines> memo, IPruneStrategy prune)
         {
-            if (maxLength > gridSize) throw new Exception($"{nameof(maxLength)} ({maxLength}) cannot be greater than {nameof(gridSize)} {gridSize}");
+            if (maxLength > gridSize) throw new ArgumentException($"{nameof(maxLength)} ({maxLength}) cannot be greater than {nameof(gridSize)} {gridSize}");
             if (maxLength < 3) return Impossible.Instance(maxLength);
 
             if (memo.TryGetValue(maxLength, out var result))
@@ -865,7 +885,7 @@ namespace WordGenLib
 
             // x and y here are abstracted wlog based on toFilter/constraint, not truly
             // connected to Horizontal vs Vertical.
-            GridDictionary<CharSet> available = new(state.Across.Length);
+            Grid2D<CharSet> available = new(state.Across.Length);
             for (int x = 0; x < constraint.Length; x++)
             {
                 var c = constraint[x];
@@ -954,14 +974,17 @@ namespace WordGenLib
 
             if (undecidedDown == null && undecidedAcross == null)
             {
-                var down = root.Down.Select(col => col.Iterate().First().Line).ToImmutableArray();
-                var across = root.Across.Select(row => row.Iterate().First().Line).ToImmutableArray();
+                var down = root.Down.Select(col => col.FirstOrNull()?.Line).ToImmutableArray();
+                var across = root.Across.Select(row => row.FirstOrNull()?.Line).ToImmutableArray();
+
+                if (down.Concat(across).Any(item => item == null))
+                    yield break;
 
                 if (down.Zip(across).Any(both => both.First == both.Second))
                     yield break;
 
                 yield return new FinalGrid(
-                    Across: across
+                    Across: across.Cast<string>().ToImmutableArray()
                 );
                 yield break;
             }
@@ -988,7 +1011,10 @@ namespace WordGenLib
                 if (optionAxis[i].MaxPossibilities > 1) continue;
                 if (oppositeAxis[i].MaxPossibilities > 1) continue;
 
-                if (optionAxis[i].Iterate().First() == oppositeAxis[i].Iterate().First()) yield break;
+                var optA = optionAxis[i].FirstOrNull();
+                var oppA = oppositeAxis[i].FirstOrNull();
+                if (optA == null || oppA == null) yield break;
+                if (optA! == oppA!) yield break;
             }
 
             var options = optionAxis[index];
@@ -1076,7 +1102,11 @@ namespace WordGenLib
                     var constriant = attempt.Line[i];
 
                     attemptOpposite[i] = IPossibleLines.RemoveWordOptions(attemptIndividualWords, attemptOpposite[i]).Filter(constriant, index);
-                    if (attemptOpposite[i].MaxPossibilities == 1 && attemptOpposite[i].Iterate().First() == attempt) yield break;
+                    if (attemptOpposite[i].MaxPossibilities == 1)
+                    {
+                        var ao = attemptOpposite[i].FirstOrNull();
+                        if (ao == null || ao! == attempt) yield break;
+                    }
                 }
 
                 if (attemptOpposite.All(opts => opts is not Impossible && opts.MaxPossibilities > 0))
@@ -1090,8 +1120,14 @@ namespace WordGenLib
                         .ToImmutableArray();
 
                     if (attemptOpposite.Zip(optionFinal)
-                        .Where(ab => ab.First.MaxPossibilities == 1 && ab.Second.MaxPossibilities == 1)
-                        .Any(ab => ab.First.Iterate().First() == ab.Second.Iterate().First()))
+                        .Where(ab => ab.First.MaxPossibilities <= 1 && ab.Second.MaxPossibilities <= 1)
+                        .Any(ab =>
+                        {
+                            var first = ab.First.FirstOrNull();
+                            var second = ab.Second.FirstOrNull();
+                            if (first == null || second == null) return true;
+                            return first! == second!;
+                        }))
                         yield break;
 
                     var newRoot = (dir == Direction.Horizontal) ?
