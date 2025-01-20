@@ -25,6 +25,7 @@ aardvarks
 aaron
 aarons
 aarp
+aave
 aba
 abalone
 abalones
@@ -298,6 +299,7 @@ acclaiming
 acclaims
 acclamation
 acclamations
+acclimate
 accolade
 accolades
 accommodate
@@ -691,6 +693,7 @@ adoptions
 adoptive
 adoptively
 adopts
+adoration
 adore
 adored
 adores
@@ -855,6 +858,8 @@ affirmatives
 affirmed
 affirming
 affirms
+affix
+affixed
 afflict
 afflicted
 afflicting
@@ -4013,6 +4018,7 @@ betraying
 betrays
 bets
 betsy
+betta
 betted
 better
 better and better
@@ -4313,6 +4319,8 @@ bladders
 blade
 bladed
 blades
+blah
+blahs
 blaine
 blair
 blairs
@@ -7637,6 +7645,7 @@ club
 clubbed
 clubber
 clubbing
+clubhouse
 clubs
 clue
 clued
@@ -8050,6 +8059,7 @@ comers
 comes
 comet
 comets
+comey
 comfort
 comfortable
 comfortableness
@@ -12710,6 +12720,7 @@ dragnet
 dragnets
 drago
 dragon
+dragonfruit
 dragons
 dragoon
 dragooned
@@ -12727,6 +12738,7 @@ drakes
 drama
 dramas
 dramatic
+dramatical
 dramatically
 dramatise
 dramatist
@@ -15802,6 +15814,7 @@ finiteness
 fink
 finland
 finn
+finna
 finned
 finning
 finnish
@@ -15927,6 +15940,7 @@ fixer
 fixers
 fixes
 fixing
+fixing to
 fixture
 fixtures
 fizz
@@ -16874,6 +16888,7 @@ fruited
 fruiting
 fruitlessly
 fruits
+fruity
 frustrate
 frustrated
 frustrates
@@ -16978,6 +16993,8 @@ funniest
 funniness
 funning
 funny
+funnyish
+funsies
 fur
 furies
 furious
@@ -22228,12 +22245,16 @@ joyful
 joyfully
 joyfulness
 joying
+joyous
+joyously
 joys
 joystick
 joysticks
 juan
 juans
 jubilant
+jubilation
+jubilations
 jubilee
 jubilees
 judah
@@ -22648,6 +22669,7 @@ kittens
 kitties
 kitting
 kitty
+kiwi
 klein
 knee
 kneed
@@ -23326,9 +23348,7 @@ lesser
 lesson
 lessons
 lest
-leste
 lester
-lestes
 let
 let it snow
 lethal
@@ -24819,6 +24839,7 @@ massacre
 massacred
 massacres
 massacring
+massage
 massages
 massaman
 massed
@@ -25636,6 +25657,8 @@ minimalisms
 minimalist
 minimalists
 minimally
+minimarket
+minimarkets
 minimization
 minimizations
 minimize
@@ -27864,6 +27887,7 @@ onorbit
 onset
 onsets
 onshore
+onsite
 onslaught
 onslaughts
 ontario
@@ -28744,6 +28768,7 @@ papa
 papadaddy
 papal
 papally
+papaya
 papayas
 paper
 paperback
@@ -29676,6 +29701,7 @@ phenomena
 phenomenon
 pheromone
 pheromones
+phew
 phi
 phil
 philadelphia
@@ -33306,6 +33332,7 @@ rejoin
 rejoined
 rejoining
 rejoins
+rejuvenated
 rekindle
 rekindled
 rekindles
@@ -37427,6 +37454,7 @@ socialization
 socializations
 socialize
 socialized
+socializing
 socially
 socials
 societal
@@ -38415,6 +38443,7 @@ starving
 stat
 state
 state of palestine
+state of the art
 state owned
 stated
 statehood
@@ -38803,6 +38832,7 @@ stouts
 stove
 stoves
 stow
+stowage
 stowaway
 stowaways
 stowed
@@ -39484,6 +39514,8 @@ supermajority
 superman
 supermarket
 supermarkets
+supermodel
+supermodels
 supernatural
 supernaturally
 supernaturals
@@ -39756,6 +39788,7 @@ sweetheart
 sweethearts
 sweetie
 sweeties
+sweetish
 sweetly
 sweetness
 sweets
@@ -40133,6 +40166,7 @@ tanzanians
 tao
 taos
 tap
+tapas
 tape
 taped
 taper
@@ -40388,6 +40422,8 @@ temperature
 temperatures
 tempered
 tempering
+temperment
+tempermental
 tempers
 tempest
 tempests
@@ -40899,6 +40935,8 @@ thrusters
 thrusting
 thrusts
 thruway
+thud
+thuds
 thug
 thugs
 thumb
@@ -43519,6 +43557,7 @@ went
 were
 were not
 werent
+werk
 west
 west germany
 west indies
@@ -44101,6 +44140,7 @@ yorkshires
 yosemite
 yosemitesam
 you
+you betta
 you have
 you know what
 you will
@@ -44191,4 +44231,3 @@ zulu
 zzz
 zzzz
 zzzzz
-comey
