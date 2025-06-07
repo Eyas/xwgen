@@ -119,26 +119,11 @@ namespace WordGenLib
             possibleLines = new(() => AllPossibleLines(gridSize));
         }
 
-        public WordInfo LookupWord(string word)
-        {
-            if (commonWordsByLength.Value.TryGetValue(word.Length, out ImmutableArray<string> c) && c.Contains(word))
-            {
-                return new WordInfo(WordInfo.InclusionType.COMMON);
-            }
-
-            if (obscureWordsByLength.Value.TryGetValue(word.Length, out ImmutableArray<string> o) && o.Contains(word))
-            {
-                return new WordInfo(WordInfo.InclusionType.OBSCURE);
-            }
-
-            return new WordInfo(WordInfo.InclusionType.NOT_INCLUDED);
-        }
-
         private IPossibleLines AllPossibleLines(int maxLength)
         {
-            return AllPossibleLines(maxLength, [], new DontPrune());
+            return AllPossibleLines(maxLength, []);
         }
-        private IPossibleLines AllPossibleLines(int maxLength, Dictionary<int, IPossibleLines> memo, IPruneStrategy prune)
+        private IPossibleLines AllPossibleLines(int maxLength, Dictionary<int, IPossibleLines> memo)
         {
             if (maxLength > gridSize) throw new ArgumentException($"{nameof(maxLength)} ({maxLength}) cannot be greater than {nameof(gridSize)} {gridSize}");
             if (maxLength < 3) return Impossible.Instance(maxLength);
@@ -147,7 +132,6 @@ namespace WordGenLib
             {
                 return result;
             }
-            var pruneState = new IPruneStrategy.PruneStepState(maxLength);
 
             var compoundBuilder = ImmutableArray.CreateBuilder<IPossibleLines>();
 
@@ -156,12 +140,10 @@ namespace WordGenLib
                     Preferred:
                         commonWordsByLength.Value[maxLength]
                             .OrderBy(_ => Random.Shared.Next(int.MaxValue))
-                            .Where(_ => prune.ShouldKeepCommonWord(pruneState))
                             .ToImmutableArray(),
                     Obscure:
                         obscureWordsByLength.Value[maxLength]
                             .OrderBy(_ => Random.Shared.Next(int.MaxValue))
-                            .Where(_ => prune.ShouldKeepObscureWord(pruneState))
                             .ToImmutableArray()
                     );
                 compoundBuilder.Add(possibleWords);
@@ -187,15 +169,15 @@ namespace WordGenLib
                         })
                         .OrderBy(_ => Random.Shared.Next(int.MaxValue))
                         .Select(l => new BlockBetween(
-                            AllPossibleLines(l.firstLength, memo, prune),
-                            AllPossibleLines(l.secondLength, memo, prune)
+                            AllPossibleLines(l.firstLength, memo),
+                            AllPossibleLines(l.secondLength, memo)
                             ))
                     );
             }
 
             // recurse into *[ANYTHING], and [ANYTHING]*
             {
-                var smaller = AllPossibleLines(maxLength - 1, memo, prune);
+                var smaller = AllPossibleLines(maxLength - 1, memo);
                 if (smaller is not Impossible)
                 {
                     compoundBuilder.AddRange(
@@ -268,28 +250,6 @@ namespace WordGenLib
                 Second: CompatibleLinesNoExtraBlocks(secondSegment)
             ));
         }
-
-        interface IPruneStrategy
-        {
-            record class PruneStepState(int MaxLength) { }
-            bool ShouldKeepCommonWord(PruneStepState state);
-            bool ShouldKeepObscureWord(PruneStepState state);
-        }
-        class DontPrune : IPruneStrategy
-        {
-            public bool ShouldKeepCommonWord(IPruneStrategy.PruneStepState _) => true;
-            public bool ShouldKeepObscureWord(IPruneStrategy.PruneStepState _) => true;
-        }
-        class PruneRoots : IPruneStrategy
-        {
-            public bool ShouldKeepCommonWord(IPruneStrategy.PruneStepState s) => Random.Shared.Next(s.MaxLength) > 1;
-            public bool ShouldKeepObscureWord(IPruneStrategy.PruneStepState s) => Random.Shared.Next(s.MaxLength) > Math.Min(2, s.MaxLength - 2);
-        }
-        class PruneAggressive : IPruneStrategy
-        {
-            public bool ShouldKeepCommonWord(IPruneStrategy.PruneStepState s) => Random.Shared.Next(s.MaxLength) > 1;
-            public bool ShouldKeepObscureWord(IPruneStrategy.PruneStepState s) => Random.Shared.Next(s.MaxLength) > Math.Min(3, s.MaxLength - 2);
-        }
     }
 
     public class Generator
@@ -329,16 +289,6 @@ namespace WordGenLib
             ExcludedWords = excludeWords.ToFrozenSet();
 
             lazyGenerator = new LazyGenerator(this.gridSize, trimmedCommon, trimmedObscure, excludeWords);
-        }
-
-        public record struct WordInfo(WordInfo.InclusionType Inclusion)
-        {
-            public enum InclusionType { NOT_INCLUDED, COMMON, OBSCURE, EXCLUDED }
-        }
-
-        public WordInfo LookupWord(string word)
-        {
-            return lazyGenerator.LookupWord(word);
         }
 
         private record GridState(ImmutableArray<IPossibleLines> Down, ImmutableArray<IPossibleLines> Across)
