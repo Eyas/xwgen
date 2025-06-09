@@ -1,4 +1,4 @@
-module ggg
+module crosswarped.com/ggg
 
 go 1.24.4
 
@@ -8,8 +8,8 @@ require (
 )
 
 require (
+	crosswarped.com/xw_generator v0.0.0-00010101000000-000000000000
 	github.com/GoogleCloudPlatform/functions-framework-go v1.9.2
-	xw_generator v0.0.0-00010101000000-000000000000
 )
 
 require (
@@ -64,4 +64,4 @@ require (
 	google.golang.org/protobuf v1.36.6 // indirect
 )
 
-replace xw_generator => ../xw_generator
+replace crosswarped.com/xw_generator => ../xw_generator
