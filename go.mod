@@ -1,4 +1,4 @@
-module gcf-generate-grid
+module ggg
 
 go 1.24.4
 
