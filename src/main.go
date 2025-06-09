@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"cloud.google.com/go/bigquery"
+	"github.com/GoogleCloudPlatform/functions-framework-go/funcframework"
 	"google.golang.org/api/iterator"
 
 	xw_generator "xw_generator/generator"
@@ -220,17 +221,17 @@ func generateGrid(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	// Register the HTTP handler
-	http.HandleFunc("/", generateGrid)
+	funcframework.RegisterHTTPFunction("/generate-grid", generateGrid)
 
-	// Start the HTTP server
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
+	port := "8080"
+	if envPort := os.Getenv("PORT"); envPort != "" {
+		port = envPort
 	}
-
-	log.Printf("Starting server on port %s", port)
-	if err := http.ListenAndServe(":"+port, nil); err != nil {
-		log.Fatalf("Server failed to start: %v\n", err)
+	hostname := ""
+	if localOnly := os.Getenv("LOCAL_ONLY"); localOnly == "true" {
+		hostname = "127.0.0.1"
+	}
+	if err := funcframework.StartHostPort(hostname, port); err != nil {
+		log.Fatalf("funcframework.StartHostPort: %v\n", err)
 	}
 }
