@@ -79,3 +79,13 @@ func (c *CharSet) Contains(r rune) bool {
 func (c *CharSet) IsFull() bool {
 	return c.count == len(c.available)
 }
+
+// Capacity returns the number of characters that can be added to the set.
+func (c *CharSet) Capacity() int {
+	return len(c.available)
+}
+
+// Count returns the number of characters in the set.
+func (c *CharSet) Count() int {
+	return c.count
+}

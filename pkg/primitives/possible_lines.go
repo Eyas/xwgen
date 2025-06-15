@@ -162,7 +162,7 @@ func (w *Words) MaxPossibilities() int64 {
 }
 
 func (w *Words) CharsAt(accumulate *CharSet, index int) {
-	if accumulate.IsFull() {
+	if accumulate.IsFull() || (!accumulate.Contains(kBlocked) && (accumulate.Count()+1) == accumulate.Capacity()) {
 		return
 	}
 	for _, word := range w.preferred {
@@ -188,7 +188,7 @@ func (w *Words) DefiniteWords() []string {
 }
 
 func (w *Words) FilterAny(constraint *CharSet, index int) PossibleLines {
-	if constraint.IsFull() {
+	if constraint.IsFull() || (!constraint.Contains(kBlocked) && (constraint.Count()+1) == constraint.Capacity()) {
 		return w
 	}
 
@@ -386,6 +386,9 @@ func (b *BlockBefore) build(inner PossibleLines) PossibleLines {
 	if isImpossible(inner) {
 		return MakeImpossible(b.NumLetters() + 1)
 	}
+	if inner == b.lines {
+		return b
+	}
 	return &BlockBefore{lines: inner}
 }
 
@@ -492,6 +495,9 @@ func (b *BlockAfter) DefiniteWords() []string {
 func (b *BlockAfter) build(inner PossibleLines) PossibleLines {
 	if isImpossible(inner) {
 		return MakeImpossible(b.NumLetters() + 1)
+	}
+	if inner == b.lines {
+		return b
 	}
 	return &BlockAfter{lines: inner}
 }
@@ -601,6 +607,9 @@ func (b *BlockBetween) DefinitelyBlockedAt(index int) bool {
 func (b *BlockBetween) build(first, second PossibleLines) PossibleLines {
 	if isImpossible(first) || isImpossible(second) {
 		return MakeImpossible(b.NumLetters())
+	}
+	if first == b.first && second == b.second {
+		return b
 	}
 	return &BlockBetween{first: first, second: second}
 }
