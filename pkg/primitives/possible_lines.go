@@ -683,7 +683,7 @@ func (b *BlockBetween) FirstOrNull() *ConcreteLine {
 	if f == nil || s == nil {
 		return nil
 	}
-	return &ConcreteLine{Line: append(append(f.Line, kBlocked), s.Line...), Words: f.Words}
+	return &ConcreteLine{Line: append(append(f.Line, kBlocked), s.Line...), Words: append(f.Words, s.Words...)}
 }
 
 func (b *BlockBetween) Iterate() iter.Seq[ConcreteLine] {
