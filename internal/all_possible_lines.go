@@ -91,7 +91,7 @@ func (s *allPossibleLineState) allPossibleLines(ctx context.Context, atLength in
 	// Blockage can be anywhere etween idx 3 and len-4 (inclusive).
 	if atLength >= 7 {
 		blockBetweenPossibilities = make([]primitives.PossibleLines, 0, atLength-6)
-		for i := 3; i <= atLength-6; i++ {
+		for i := 3; i <= atLength-4; i++ {
 			firstLength := i                   // Always >= 3.
 			secondLength := atLength - (i + 1) // Always >= 3.
 
@@ -115,6 +115,7 @@ func (s *allPossibleLineState) allPossibleLines(ctx context.Context, atLength in
 	}
 
 	if blockBefore == nil && blockAfter == nil && len(blockBetweenPossibilities) == 0 {
+		s.memoizedLines[atLength] = words
 		return words
 	}
 
@@ -125,12 +126,10 @@ func (s *allPossibleLineState) allPossibleLines(ctx context.Context, atLength in
 	if blockAfter != nil {
 		allPossibilities = append(allPossibilities, blockAfter)
 	}
+	// Append all elements from blockBetweenPossibilities efficiently
 	if len(blockBetweenPossibilities) > 0 {
-		for _, b := range blockBetweenPossibilities {
-			allPossibilities = append(allPossibilities, b)
-		}
+		allPossibilities = append(allPossibilities, blockBetweenPossibilities...)
 	}
-
 	compound := primitives.MakeCompound(allPossibilities)
 	s.memoizedLines[atLength] = compound
 	return compound
