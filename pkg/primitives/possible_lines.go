@@ -195,27 +195,40 @@ func (w *Words) FilterAny(constraint *CharSet, index int) PossibleLines {
 
 	// Lazy: First check if any of the words in either list don't match the filter.
 	// Otherwise we don't need to copy the lists
-	if !slices.ContainsFunc(w.preferred, func(word string) bool {
-		return !constraint.Contains(rune(word[index]))
-	}) && !slices.ContainsFunc(w.obscure, func(word string) bool {
+	var filteredPreferred, filteredObscure []string
+	if slices.ContainsFunc(w.preferred, func(word string) bool {
 		return !constraint.Contains(rune(word[index]))
 	}) {
+		filteredPreferred = make([]string, 0, len(w.preferred)/2)
+		for _, word := range w.preferred {
+			if constraint.Contains(rune(word[index])) {
+				filteredPreferred = append(filteredPreferred, word)
+			}
+		}
+	} else {
+		filteredPreferred = w.preferred
+	}
+
+	if slices.ContainsFunc(w.obscure, func(word string) bool {
+		return !constraint.Contains(rune(word[index]))
+	}) {
+		filteredObscure = make([]string, 0, len(w.obscure)/2)
+		for _, word := range w.obscure {
+			if constraint.Contains(rune(word[index])) {
+				filteredObscure = append(filteredObscure, word)
+			}
+		}
+	} else {
+		filteredObscure = w.obscure
+	}
+
+	lenPref := len(filteredPreferred)
+	lenObsc := len(filteredObscure)
+	if lenPref == len(w.preferred) && lenObsc == len(w.obscure) {
 		return w
 	}
 
-	filteredPreferred := make([]string, 0, len(w.preferred)/2)
-	filteredObscure := make([]string, 0, len(w.obscure)/2)
-	for _, word := range w.preferred {
-		if constraint.Contains(rune(word[index])) {
-			filteredPreferred = append(filteredPreferred, word)
-		}
-	}
-	for _, word := range w.obscure {
-		if constraint.Contains(rune(word[index])) {
-			filteredObscure = append(filteredObscure, word)
-		}
-	}
-	if len(filteredPreferred) == 0 && len(filteredObscure) == 0 {
+	if (lenPref + lenObsc) == 0 {
 		return MakeImpossible(w.NumLetters())
 	}
 	return MakeWords(filteredPreferred, filteredObscure)
@@ -841,6 +854,9 @@ func (c *Compound) FilterAny(constraint *CharSet, index int) PossibleLines {
 		} else {
 			filtered = append(filtered, f)
 		}
+	}
+	if !anyChangeInSubParts {
+		return c
 	}
 
 	if len(filtered) == 0 {

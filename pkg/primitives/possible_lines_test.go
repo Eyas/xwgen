@@ -103,6 +103,46 @@ func TestImpossible(t *testing.T) {
 	})
 }
 
+func TestWords_FilterAny(t *testing.T) {
+	p1 := MakeWords([]string{"ab"}, []string{})
+	p2 := MakeWords([]string{"ac"}, []string{})
+	p12 := MakeWords([]string{"ab", "ac"}, []string{})
+
+	csa := DefaultCharSet()
+	csa.Add('a')
+
+	csbc := DefaultCharSet()
+	csbc.Add('b')
+	csbc.Add('c')
+
+	tests := []struct {
+		name     string
+		pl       PossibleLines
+		cs       *CharSet
+		index    int
+		expected PossibleLines
+	}{
+		{"ab filtered by a at index 0", p1, csa, 0, p1},
+		{"ac filtered by a at index 0", p2, csa, 0, p2},
+		{"abac filtered by a at index 0", p12, csa, 0, p12},
+		{"ab filtered by bc at index 1", p1, csbc, 1, p1},
+		{"ac filtered by bc at index 1", p2, csbc, 1, p2},
+		{"abac filtered by bc at index 1", p12, csbc, 1, p12},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			got := test.pl.FilterAny(test.cs, test.index)
+			if !reflect.DeepEqual(got, test.expected) {
+				t.Errorf("FilterAny(%v, %d) = %v, want %v", test.cs, test.index, got, test.expected)
+			}
+			if test.expected.MaxPossibilities() != test.pl.MaxPossibilities() {
+				t.Errorf("MaxPossibilities mismatch (-want +got): %s", cmp.Diff(test.expected.MaxPossibilities(), test.pl.MaxPossibilities()))
+			}
+		})
+	}
+}
+
 func TestWords(t *testing.T) {
 	// Test MakeWords
 	t.Run("MakeWords", func(t *testing.T) {
