@@ -18,6 +18,7 @@ func main() {
 	firstOnly := flag.Bool("first", false, "Only generate the first grid")
 	doAll := flag.Bool("all", false, "Generate all grids")
 	sideLength := flag.Int("width", 4, "The width of the grid")
+	minWordLength := flag.Int("min_length", 3, "The minimum word length")
 	loadWordsFromCloud := flag.Bool("cloud", false, "Load words from cloud")
 	obscure := flag.Bool("obscure", false, "Include obscure words")
 	scope := flag.String("scope", "regular", "The scope of the words to load")
@@ -41,7 +42,7 @@ func main() {
 	var preferredWords, obscureWords, excludedWords []string
 	if *loadWordsFromCloud {
 		fmt.Println("Loading words from cloud...")
-		p, o, err := ggg.LoadWordsFromCloud(ctx, *scope, *obscure, *sideLength)
+		p, o, err := ggg.LoadWordsFromCloud(ctx, *scope, *obscure, *minWordLength, *sideLength)
 		if err != nil {
 			fmt.Println("Error loading words from cloud:", err)
 			os.Exit(1)
