@@ -27,8 +27,8 @@ func TestCharSet_Add(t *testing.T) {
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Add() error = %v, wantErr %v", err, tt.wantErr)
 			}
-			if cs.count != tt.wantCount {
-				t.Errorf("count = %d, want %d", cs.count, tt.wantCount)
+			if cs.Count() != tt.wantCount {
+				t.Errorf("count = %d, want %d", cs.Count(), tt.wantCount)
 			}
 		})
 	}
@@ -112,8 +112,8 @@ func TestCharSet_AddAll(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			cs1, cs2 := tt.setup()
 			cs1.AddAll(cs2)
-			if cs1.count != tt.expected {
-				t.Errorf("count = %d, want %d", cs1.count, tt.expected)
+			if cs1.Count() != tt.expected {
+				t.Errorf("count = %d, want %d", cs1.Count(), tt.expected)
 			}
 		})
 	}
