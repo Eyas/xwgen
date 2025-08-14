@@ -467,9 +467,10 @@ func (b *BlockBefore) FirstOrNull() *ConcreteLine {
 }
 
 func (b *BlockBefore) MakeChoice() ChoiceStep {
+	c := b.lines.MakeChoice()
 	return ChoiceStep{
-		Choice:    &BlockBefore{lines: b.lines.MakeChoice().Choice},
-		Remaining: &BlockBefore{lines: b.lines.MakeChoice().Remaining},
+		Choice:    &BlockBefore{lines: c.Choice},
+		Remaining: &BlockBefore{lines: c.Remaining},
 	}
 }
 
@@ -590,9 +591,10 @@ func (b *BlockAfter) Iterate() iter.Seq[ConcreteLine] {
 }
 
 func (b *BlockAfter) MakeChoice() ChoiceStep {
+	c := b.lines.MakeChoice()
 	return ChoiceStep{
-		Choice:    &BlockAfter{lines: b.lines.MakeChoice().Choice},
-		Remaining: &BlockAfter{lines: b.lines.MakeChoice().Remaining},
+		Choice:    &BlockAfter{lines: c.Choice},
+		Remaining: &BlockAfter{lines: c.Remaining},
 	}
 }
 
