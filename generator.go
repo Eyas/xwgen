@@ -152,8 +152,7 @@ func prefilter(ctx context.Context, s gridState, dir Direction) gridState {
 
 		for j := range constraintLine.NumLetters() {
 			available[i][j] = *primitives.DefaultCharSet()
-			chars := available[i][j]
-			constraintLine.CharsAt(&chars, j)
+			constraintLine.CharsAt(&available[i][j], j)
 		}
 	}
 
@@ -512,16 +511,27 @@ func iterateAllPossibleGrids(ctx context.Context, root *gridState, index int, di
 				})
 
 				// If any word appears more than once, this is not a valid grid.
-				if slices.Contains(sliceZip(attemptOpposite, optionFinal, func(first, second primitives.PossibleLines) bool {
-					if first.MaxPossibilities() > 1 || second.MaxPossibilities() > 1 {
-						return false
+				{
+					duplicate := false
+					for k := range attemptOpposite {
+						first := attemptOpposite[k]
+						second := optionFinal[k]
+						if first.MaxPossibilities() > 1 || second.MaxPossibilities() > 1 {
+							continue
+						}
+						f := first.FirstOrNull()
+						s := second.FirstOrNull()
+						if f == nil || s == nil {
+							continue
+						}
+						if slices.Equal(f.Line, s.Line) {
+							duplicate = true
+							break
+						}
 					}
-					if first.FirstOrNull() == second.FirstOrNull() {
-						return true
+					if duplicate {
+						return
 					}
-					return false
-				}), true) {
-					return
 				}
 
 				var newRoot *gridState
@@ -612,16 +622,27 @@ func iterateAllPossibleGrids(ctx context.Context, root *gridState, index int, di
 					return removeWordOptions(attempt.Words, regular)
 				})
 
-			if slices.Contains(sliceZip(attemptOpposite, optionFinal, func(first, second primitives.PossibleLines) bool {
-				if first.MaxPossibilities() > 1 || second.MaxPossibilities() > 1 {
-					return false
+			{
+				duplicate := false
+				for k := range attemptOpposite {
+					first := attemptOpposite[k]
+					second := optionFinal[k]
+					if first.MaxPossibilities() > 1 || second.MaxPossibilities() > 1 {
+						continue
+					}
+					f := first.FirstOrNull()
+					s := second.FirstOrNull()
+					if f == nil || s == nil {
+						continue
+					}
+					if slices.Equal(f.Line, s.Line) {
+						duplicate = true
+						break
+					}
 				}
-				if first.FirstOrNull() == second.FirstOrNull() {
-					return true
+				if duplicate {
+					return
 				}
-				return false
-			}), true) {
-				return
 			}
 
 			var newRoot *gridState
@@ -653,14 +674,6 @@ func sliceSelectFunc[From any, To any](slice []From, f func(From, int) To) []To 
 	result := make([]To, len(slice))
 	for i, v := range slice {
 		result[i] = f(v, i)
-	}
-	return result
-}
-
-func sliceZip[First any, Second any, Result any](first []First, second []Second, f func(First, Second) Result) []Result {
-	result := make([]Result, len(first))
-	for i := range first {
-		result[i] = f(first[i], second[i])
 	}
 	return result
 }
