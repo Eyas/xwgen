@@ -136,6 +136,9 @@ func MakeImpossible(numLetters int) *Impossible {
 type Words struct {
 	preferred []string
 	obscure   []string
+	// letterMasks caches, for each index, the bitmask of allowed runes across all words.
+	// It accelerates CharsAt and lets FilterAny early-return.
+	letterMasks []*CharSet
 }
 
 func MakeWords(preferred, obscure []string, numLetters int) PossibleLines {
@@ -148,6 +151,7 @@ func MakeWords(preferred, obscure []string, numLetters int) PossibleLines {
 	if len(preferred) == 0 && len(obscure) == 1 {
 		return MakeDefinite(ConcreteLine{Line: []rune(obscure[0]), Words: []string{obscure[0]}})
 	}
+	// Lazily allocate letterMasks on first use to avoid upfront cost when not needed.
 	return &Words{preferred: preferred, obscure: obscure}
 }
 
@@ -166,12 +170,23 @@ func (w *Words) CharsAt(accumulate *CharSet, index int) {
 	if accumulate.IsFull() || (!accumulate.Contains(kBlocked) && (accumulate.Count()+1) == accumulate.Capacity()) {
 		return
 	}
-	for _, word := range w.preferred {
-		accumulate.Add(rune(word[index]))
+	// Build masks lazily.
+	if w.letterMasks == nil {
+		w.letterMasks = make([]*CharSet, w.NumLetters())
 	}
-	for _, word := range w.obscure {
-		accumulate.Add(rune(word[index]))
+	if w.letterMasks[index] == nil {
+		mask := NewCharSet()
+		for _, word := range w.preferred {
+			r := rune(word[index])
+			mask.Add(r)
+		}
+		for _, word := range w.obscure {
+			r := rune(word[index])
+			mask.Add(r)
+		}
+		w.letterMasks[index] = mask
 	}
+	accumulate.AddAll(w.letterMasks[index])
 }
 
 func (w *Words) DefinitelyBlockedAt(index int) bool {
@@ -191,6 +206,14 @@ func (w *Words) DefiniteWords() []string {
 func (w *Words) FilterAny(constraint *CharSet, index int) PossibleLines {
 	if constraint.IsFull() || (!constraint.Contains(kBlocked) && (constraint.Count()+1) == constraint.Capacity()) {
 		return w
+	}
+
+	// If we have a mask and it is entirely contained by the constraint, nothing to filter.
+	if w.letterMasks != nil && w.letterMasks[index] != nil {
+		mask := w.letterMasks[index]
+		if constraint.ContainsAll(mask) {
+			return w
+		}
 	}
 
 	// Lazy: First check if any of the words in either list don't match the filter.
@@ -981,8 +1004,24 @@ func (c *Compound) MakeChoice() ChoiceStep {
 	if c.MaxPossibilities() <= 1 {
 		panic("Cannot make a choice if MaxPossibilities <= 1")
 	}
+	// Weighted split: partition by MaxPossibilities sum to balance the two sides.
+	total := int64(0)
+	for _, p := range c.possibilities {
+		total += p.MaxPossibilities()
+	}
+	half := total / 2
+	acc := int64(0)
+	splitIdx := 1
+	for i, p := range c.possibilities {
+		acc += p.MaxPossibilities()
+		// ensure non-empty left side
+		if acc >= half && i+1 < len(c.possibilities) {
+			splitIdx = i + 1
+			break
+		}
+	}
 
-	choice, remaining := c.possibilities[:len(c.possibilities)/2], c.possibilities[len(c.possibilities)/2:]
+	choice, remaining := c.possibilities[:splitIdx], c.possibilities[splitIdx:]
 
 	return ChoiceStep{
 		Choice:    MakeCompound(choice, c.NumLetters()),
