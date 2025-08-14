@@ -735,7 +735,7 @@ func (b *BlockBetween) Iterate() iter.Seq[ConcreteLine] {
 }
 
 func (b *BlockBetween) MakeChoice() ChoiceStep {
-	if b.first.MaxPossibilities() > 1 {
+	if b.first.MaxPossibilities() > b.second.MaxPossibilities() {
 		firstChoice := b.first.MakeChoice()
 		return ChoiceStep{
 			Choice:    &BlockBetween{first: firstChoice.Choice, second: b.second},
