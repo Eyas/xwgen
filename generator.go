@@ -372,18 +372,6 @@ func possibleGridsAtRoot(ctx context.Context, root *gridState) iter.Seq[Grid] {
 	}
 }
 
-func changed(before, after *gridState) bool {
-	for i := range before.down {
-		if before.down[i].MaxPossibilities() != after.down[i].MaxPossibilities() {
-			return true
-		}
-		if before.across[i].MaxPossibilities() != after.across[i].MaxPossibilities() {
-			return true
-		}
-	}
-	return false
-}
-
 func isBoardDefinitelyDivided(state *gridState) bool {
 	type blockExplorationState = int
 	const (
