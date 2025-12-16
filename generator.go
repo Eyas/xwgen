@@ -299,7 +299,7 @@ func possibleGridsAtRoot(ctx context.Context, root *gridState) iter.Seq[Grid] {
 			return
 		}
 
-		// If board is > 35% blocked, it's not worth iterating in it.
+		// If board is > 25% blocked, it's not worth iterating in it.
 		numDefinitelyBlocked := 0
 		for i := range lineLength {
 			numDefinitelyBlocked += countWhere(root.down, func(p primitives.PossibleLines) bool {
@@ -307,7 +307,7 @@ func possibleGridsAtRoot(ctx context.Context, root *gridState) iter.Seq[Grid] {
 			})
 		}
 
-		if numDefinitelyBlocked > ((lineLength * lineLength * 35) / 100) {
+		if numDefinitelyBlocked > ((lineLength * lineLength * 25) / 100) {
 			return
 		}
 
