@@ -1,4 +1,4 @@
-package xw_generator
+package gen
 
 import (
 	"fmt"

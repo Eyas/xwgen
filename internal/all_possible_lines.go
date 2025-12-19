@@ -4,7 +4,7 @@ import (
 	"context"
 	"math/rand/v2"
 
-	"crosswarped.com/ggg/xw_generator/generator/primitives"
+	"crosswarped.com/gen/pkg/primitives"
 )
 
 type AllPossibleLinesParams struct {

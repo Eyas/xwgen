@@ -1,4 +1,4 @@
-package xw_generator
+package gen
 
 import (
 	"context"
@@ -6,8 +6,8 @@ import (
 	"math/rand/v2"
 	"slices"
 
-	"crosswarped.com/ggg/xw_generator/generator/internal"
-	"crosswarped.com/ggg/xw_generator/generator/primitives"
+	"crosswarped.com/gen/internal"
+	"crosswarped.com/gen/pkg/primitives"
 )
 
 // Direction is an enum representing the direction of a line in a grid, either 'Horizontal' or 'Vertical'.
