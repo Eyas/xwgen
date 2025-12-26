@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1766779852335,
+  "lastUpdate": 1766785863661,
   "repoUrl": "https://github.com/Eyas/xwgen",
   "entries": {
     "Benchmark": [
@@ -422,6 +422,146 @@ window.BENCHMARK_DATA = {
           {
             "name": "BenchmarkPossibleGrids/8x8 - allocs/op",
             "value": 16976008,
+            "unit": "allocs/op",
+            "extra": "1 times\n4 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Eyas",
+            "username": "Eyas"
+          },
+          "committer": {
+            "name": "Eyas",
+            "username": "Eyas"
+          },
+          "id": "8e7e5ddc0ea9abdefb38f724ce851c0b7b8cb729",
+          "message": "Implement optimizations for our algorithm.",
+          "timestamp": "2025-12-26T19:41:45Z",
+          "url": "https://github.com/Eyas/xwgen/pull/2/commits/8e7e5ddc0ea9abdefb38f724ce851c0b7b8cb729"
+        },
+        "date": 1766785863202,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkPossibleGrids/5x5",
+            "value": 7028886,
+            "unit": "ns/op\t         5.000 boards_returned\t 4512170 B/op\t   20352 allocs/op",
+            "extra": "168 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/5x5 - ns/op",
+            "value": 7028886,
+            "unit": "ns/op",
+            "extra": "168 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/5x5 - boards_returned",
+            "value": 5,
+            "unit": "boards_returned",
+            "extra": "168 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/5x5 - B/op",
+            "value": 4512170,
+            "unit": "B/op",
+            "extra": "168 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/5x5 - allocs/op",
+            "value": 20352,
+            "unit": "allocs/op",
+            "extra": "168 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/6x6",
+            "value": 49276529,
+            "unit": "ns/op\t         5.000 boards_returned\t33991333 B/op\t  214629 allocs/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/6x6 - ns/op",
+            "value": 49276529,
+            "unit": "ns/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/6x6 - boards_returned",
+            "value": 5,
+            "unit": "boards_returned",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/6x6 - B/op",
+            "value": 33991333,
+            "unit": "B/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/6x6 - allocs/op",
+            "value": 214629,
+            "unit": "allocs/op",
+            "extra": "22 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/7x7",
+            "value": 1324838915,
+            "unit": "ns/op\t         5.000 boards_returned\t1299981224 B/op\t 3326618 allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/7x7 - ns/op",
+            "value": 1324838915,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/7x7 - boards_returned",
+            "value": 5,
+            "unit": "boards_returned",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/7x7 - B/op",
+            "value": 1299981224,
+            "unit": "B/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/7x7 - allocs/op",
+            "value": 3326618,
+            "unit": "allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/8x8",
+            "value": 4127121678,
+            "unit": "ns/op\t         5.000 boards_returned\t4038355576 B/op\t 8823718 allocs/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/8x8 - ns/op",
+            "value": 4127121678,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/8x8 - boards_returned",
+            "value": 5,
+            "unit": "boards_returned",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/8x8 - B/op",
+            "value": 4038355576,
+            "unit": "B/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkPossibleGrids/8x8 - allocs/op",
+            "value": 8823718,
             "unit": "allocs/op",
             "extra": "1 times\n4 procs"
           }
