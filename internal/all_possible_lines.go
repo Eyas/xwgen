@@ -185,6 +185,12 @@ func AllPossibleLines(ctx context.Context, p AllPossibleLinesParams) (primitives
 	}
 
 	possibleLines := state.allPossibleLines(ctx, params.lineLength)
+	// Warm the structure once up-front so the generator doesn't pay any sync.Once / first-use
+	// costs inside the search loop.
+	//
+	// This should be a net win for larger grids (the warm work is small and amortized), but if
+	// you're only generating tiny grids it may be neutral.
+	primitives.WarmPossibleLines(possibleLines)
 	return possibleLines, ctx.Err()
 }
 

@@ -146,6 +146,17 @@ type Words struct {
 	cacheValid uint32 // bit i => charsCache[i] is valid
 }
 
+// Warm precomputes internal lookup tables used for fast filtering.
+//
+// This is safe to call multiple times (the underlying work is guarded by sync.Once).
+// It can be beneficial to call this once up-front on the root PossibleLines
+// returned by internal.AllPossibleLines so the solver doesn't pay any "first-use"
+// costs inside the search.
+func (w *Words) Warm() {
+	w.u.ensureMasks()
+	w.u.ensureIndexByWord()
+}
+
 func MakeWordsFromPreferredAndObscure(preferred, obscure []string, numLetters int) PossibleLines {
 	if len(preferred) == 0 && len(obscure) == 0 {
 		return MakeImpossible(numLetters)
@@ -207,8 +218,8 @@ func (w *Words) CharsAt(accumulate *CharSet, index int) {
 	for cidx := 0; cidx < int(numChars); cidx++ {
 		r := rune(minChar + rune(cidx))
 		// Words can never include blocked cells, so the mask for '`' will be empty; keep it anyway.
-		mask := w.u.maskForCharIdx(index, cidx)
-		if hasIntersection(w.set, mask) {
+		base := w.u.maskBase(index, cidx)
+		if hasIntersectionAt(w.set, w.u.masks, base, w.u.blocks) {
 			_ = cs.Add(r)
 		}
 	}
@@ -260,12 +271,12 @@ func (w *Words) FilterAny(constraint *CharSet, index int) PossibleLines {
 
 	// Small fast-paths: common case is 1-2 constraints.
 	if nIdxs == 1 {
-		mask := w.u.maskForCharIdx(index, idxs[0])
+		base := w.u.maskBase(index, idxs[0])
 		newSet := make([]uint64, len(w.set))
 		newMax := int64(0)
 		unchanged := true
 		for i := range w.set {
-			ns := w.set[i] & mask[i]
+			ns := w.set[i] & w.u.masks[base+i]
 			newSet[i] = ns
 			if ns != w.set[i] {
 				unchanged = false
@@ -296,7 +307,8 @@ func (w *Words) FilterAny(constraint *CharSet, index int) PossibleLines {
 	for i := range w.set {
 		allowed := uint64(0)
 		for j := 0; j < nIdxs; j++ {
-			allowed |= w.u.maskForCharIdx(index, idxs[j])[i]
+			base := w.u.maskBase(index, idxs[j])
+			allowed |= w.u.masks[base+i]
 		}
 
 		ns := w.set[i] & allowed
@@ -335,13 +347,13 @@ func (w *Words) Filter(constraint rune, index int) PossibleLines {
 
 	w.u.ensureMasks()
 	cidx := int(constraint - minChar)
-	mask := w.u.maskForCharIdx(index, cidx)
+	base := w.u.maskBase(index, cidx)
 
 	newSet := make([]uint64, len(w.set))
 	newMax := int64(0)
 	unchanged := true
 	for i := range w.set {
-		ns := w.set[i] & mask[i]
+		ns := w.set[i] & w.u.masks[base+i]
 		newSet[i] = ns
 		if ns != w.set[i] {
 			unchanged = false
@@ -533,8 +545,20 @@ type wordUniverse struct {
 	blocks int
 
 	masksOnce sync.Once
-	// masks is a flattened 3D tensor:
-	// masks[(pos*numChars + charIdx)*blocks + block] = bitmask for that char at that pos.
+	// masks is a flattened 3D tensor of word-membership bitsets.
+	//
+	// Conceptually it is:
+	//   masks[pos][charIdx] = BitSet(words that have rune(minChar+charIdx) at position pos)
+	//
+	// Each BitSet is stored as `blocks` uint64s (so we can do fast AND/intersection against
+	// a Words.set bitset without allocating or scanning the full word list).
+	//
+	// Layout:
+	//   base := (pos*numChars + charIdx) * blocks
+	//   masks[base + block] is the uint64 for that block.
+	//
+	// This is *not* an array of CharSet: CharSet is a 27-bit set of runes.
+	// Here we need the inverse mapping: for a given rune at a given position, which words match it?
 	masks []uint64
 
 	indexOnce   sync.Once
@@ -591,9 +615,11 @@ func (u *wordUniverse) ensureMasks() {
 	})
 }
 
-func (u *wordUniverse) maskForCharIdx(pos int, charIdx int) []uint64 {
-	base := (pos*int(numChars) + charIdx) * u.blocks
-	return u.masks[base : base+u.blocks]
+// maskBase returns the base index into u.masks for (pos,charIdx).
+//
+// The caller can then index u.masks[base+i] for i in [0, blocks).
+func (u *wordUniverse) maskBase(pos int, charIdx int) int {
+	return (pos*int(numChars) + charIdx) * u.blocks
 }
 
 func (u *wordUniverse) fullSet() []uint64 {
@@ -644,10 +670,50 @@ func hasIntersection(a, b []uint64) bool {
 	return false
 }
 
+func hasIntersectionAt(set []uint64, masks []uint64, base int, blocks int) bool {
+	for i := 0; i < blocks; i++ {
+		if set[i]&masks[base+i] != 0 {
+			return true
+		}
+	}
+	return false
+}
+
 func hasBit(set []uint64, idx int) bool {
 	bi := idx / 64
 	bit := uint(idx % 64)
 	return (set[bi] & (uint64(1) << bit)) != 0
+}
+
+// WarmPossibleLines traverses a PossibleLines tree and warms any underlying wordUniverses.
+//
+// This is mainly intended for callers that construct a shared root PossibleLines (e.g. internal.AllPossibleLines)
+// and then filter/iterate it many times during search.
+func WarmPossibleLines(pl PossibleLines) {
+	switch t := pl.(type) {
+	case nil:
+		return
+	case *Impossible:
+		return
+	case *Definite:
+		return
+	case *Words:
+		t.Warm()
+	case *Compound:
+		for _, p := range t.possibilities {
+			WarmPossibleLines(p)
+		}
+	case *BlockBefore:
+		WarmPossibleLines(t.lines)
+	case *BlockAfter:
+		WarmPossibleLines(t.lines)
+	case *BlockBetween:
+		WarmPossibleLines(t.first)
+		WarmPossibleLines(t.second)
+	default:
+		// Shouldn't happen: PossibleLines is sealed, but keep this for future additions.
+		return
+	}
 }
 
 // clearBit clears idx in set and returns true if it was previously set.
